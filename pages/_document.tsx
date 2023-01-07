@@ -1,4 +1,4 @@
-import { Html, Head, Main, NextScript } from 'next/document'
+import { Html, Head, Main, NextScript } from "next/document";
 
 export default function Document() {
   return (
@@ -7,10 +7,10 @@ export default function Document() {
         <link rel="preconnect" href="https://rsms.me/" />
         <link rel="stylesheet" href="https://rsms.me/inter/inter.css"></link>
       </Head>
-      <body className='no-scrollbar'>
+      <body>
         <Main />
         <NextScript />
       </body>
     </Html>
-  )
+  );
 }

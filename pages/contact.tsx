@@ -3,11 +3,21 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { EnvelopeIcon, PhoneIcon } from "@heroicons/react/24/outline";
 import { useForm } from "@formspree/react";
 import { faCircleCheck } from "@fortawesome/free-regular-svg-icons";
+import Head from "next/head";
 
 export default function Contact() {
   const [state, handleSubmit] = useForm("xwkjkrvp");
   return (
     <div className="rounded mt-8">
+      <Head>
+        <title>Contact - Aditya Giri</title>
+        <meta
+          name="description"
+          content="Portfolio for Aditya Giri. Programmer, Polyglot, and YouTuber who builds tons of side projects and is very passionate about startups and engineering."
+        />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <div className="mx-auto max-w-7xl py-16 px-6 sm:py-24 lg:px-8">
         <div className="relative bg-white shadow-xl">
           <h2 className="sr-only">Contact me</h2>

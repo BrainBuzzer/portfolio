@@ -14,11 +14,11 @@ interface Props {
   }[];
 }
 
-export default function Home(props: Props) {
+export default function Blog(props: Props) {
   return (
     <>
       <Head>
-        <title>Aditya Giri</title>
+        <title>Blog - Aditya Giri</title>
         <meta
           name="description"
           content="Portfolio for Aditya Giri. Programmer, Polyglot, and YouTuber who builds tons of side projects and is very passionate about startups and engineering."

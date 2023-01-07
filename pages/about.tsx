@@ -1,3 +1,5 @@
+import Head from "next/head";
+
 interface ExperienceProps {
   company: string;
   position: string;
@@ -59,6 +61,15 @@ const experience: ExperienceProps[] = [
 export default function About() {
   return (
     <div>
+      <Head>
+        <title>About - Aditya Giri</title>
+        <meta
+          name="description"
+          content="Portfolio for Aditya Giri. Programmer, Polyglot, and YouTuber who builds tons of side projects and is very passionate about startups and engineering."
+        />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <h1 className="text-4xl mt-8 text-center font-bold">About</h1>
       <figure>
         <embed src="https://wakatime.com/share/@cbfef042-6778-4ec5-b8b3-d0bec476af37/65573729-452b-4545-9f28-f6711161e8a5.svg"></embed>

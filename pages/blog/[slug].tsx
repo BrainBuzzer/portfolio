@@ -1,21 +1,29 @@
 import fs from "fs";
 import matter from "gray-matter";
 import md from "markdown-it";
+import Head from "next/head";
 
 interface Props {
   frontmatter: {
     title: string;
     date: string;
+    excerpt: string;
   };
   content: string;
 }
 
 // The page for each post
 export default function Post({ frontmatter, content }: Props) {
-  const { title, date } = frontmatter;
+  const { title, date, excerpt } = frontmatter;
 
   return (
     <main className="mt-8">
+      <Head>
+        <title>{title} - Aditya Giri</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" />
+        <meta name="description" content={excerpt} />
+      </Head>
       <div className="text-center text-gray-400">{date}</div>
       <h1 className="text-center text-4xl font-bold text-gray-900 pt-4">{title}</h1>
       <div

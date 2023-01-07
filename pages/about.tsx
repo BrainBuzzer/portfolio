@@ -1,0 +1,103 @@
+import { useState } from "react";
+
+interface ExperienceProps {
+  company: string;
+  position: string;
+  date: string;
+  shortDescription: string;
+  description: string;
+  longDescription: string[];
+  techStack: string[];
+}
+
+const experience: ExperienceProps[] = [
+  {
+    company: "Classcard",
+    position: "Software Engineer",
+    date: "Dec 2022 - Present",
+    shortDescription: "Worked as a software engineer at Classcard helping build backend systems.",
+    description:
+      "Worked as a software engineer at Classcard helping build backend systems. I worked on the backend of the web application, which is built with Laravel. I also worked on the database, which is built with MySQL.",
+    longDescription: [
+      "Worked on the backend of the web application, which is built with Laravel",
+      "Refined development and production workflows to improve the efficiency of the team",
+      "Made web reports over 100x faster by optimizing the database queries and the backend",
+    ],
+    techStack: ["DigitalOcean", "Laravel"],
+  },
+  {
+    company: "Hyperlog",
+    position: "Founder",
+    date: "March 2018 - Present",
+    shortDescription: "Founded Hyperlog which helped companies hire students more effectively.",
+    description:
+      "Founded Hyperlog which helped companies hire engineering students. I worked on all aspects related to engineering, product, and marketing. Built bullet-proof algorithm that helped companies hire students more effectively.",
+    longDescription: [
+      "At Hyperlog, over the years, I have developed a behavioral developer intelligence platform that delves into code to extract data such as Code Maintainability, Readability, Complexity, and many more attributes that define the Codebase",
+      "Conducted pilots with large enterprises and Fortune 500 companies, working end-to-end in the entire sales process",
+      "Developed and deployed the required systems on-premise",
+      "Marketed the product to the target audience and generated leads",
+    ],
+    techStack: ["AWS", "Ruby", "Rust", "PHP", "Python", "Kubernetes", "NodeJS", "PostgreSQL", "Clickhouse", "Airflow"],
+  },
+  {
+    company: "Kawa Space",
+    position: "Consultant",
+    date: "Dec 2020 - Dec 2021",
+    shortDescription: "Worked as a consultant for Kawa Space, a startup that is democratizing space data.",
+    description:
+      "Worked as a consultant for Kawa Space, a startup that is democratizing space data. I worked on the frontend of the web application, which is built with React. I also worked on the backend, which is built with Rails and Golang. I also worked on the database, which is built with PostgreSQL.",
+    longDescription: [
+      "Started with Frontend engineering and eventually shifted to the Backend and Data Engineering side",
+      "Assisted the team in developing and deploying several ML models",
+      "Worked with departments across the company, including marketing and project management, in developing new ideas, initiatives, products, and services.",
+      "Worked on the SSO Authentication system for enterprises",
+      "Improved CI/CD systems for seamless product delivery.",
+    ],
+    techStack: ["GCP", "Ruby on Rails", "Golang", "Python", "React", "Airflow", "Kubernetes", "PostgreSQL", "BigQuery"],
+  },
+];
+
+export default function About() {
+  return (
+    <div>
+      <h1 className="text-4xl mt-8 text-center font-bold">About</h1>
+      <h2 className="text-2xl mt-4 text-center font-semibold">Experience</h2>
+      <div className="flex flex-col items-center justify-center">
+        {experience.map((exp, key) => (
+          <div key={key} className="flex flex-col items-center justify-center w-3/4 mt-8">
+            <div className="flex flex-row items-center justify-between w-full">
+              <div className="flex flex-col items-start justify-start">
+                <h3 className="text-xl font-semibold">{exp.company}</h3>
+                <h4 className="text-lg">{exp.position}</h4>
+                <h5 className="text-md font-light text-gray-600">{exp.date}</h5>
+
+                <p className="text-md mt-3">tldr; {exp.description}</p>
+
+                <div className="mt-3">
+                  <ul className="list-disc">
+                    {exp.longDescription.map((desc, longKey) => (
+                      <li key={longKey} className="text-lg">
+                        {desc}
+                      </li>
+                    ))}
+                  </ul>
+
+                  <ul className="inline-flex gap-4 mt-2">
+                    {/* add , and show tech stack */}
+                    {exp.techStack.map((tech, techKey) => (
+                      <li key={techKey} className="text-md font-light">
+                        {tech}
+                      </li>
+                    ))}
+                  </ul>
+                  <br />
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}

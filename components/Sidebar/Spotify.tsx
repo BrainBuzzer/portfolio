@@ -1,7 +1,10 @@
 import useSWR from "swr";
 
 export default function Spotify() {
-  const fetcher = (...args: any) => fetch(...args).then((res) => res.json());
+  const fetcher = async (input: RequestInfo, init: RequestInit, ...args: any[]) => {
+    const res = await fetch(input, init);
+    return res.json();
+  };
 
   const { data, isLoading } = useSWR("/api/spotify", fetcher, {
     refreshInterval: 50000,

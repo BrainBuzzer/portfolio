@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 interface ExperienceProps {
   company: string;
   position: string;
@@ -62,6 +60,9 @@ export default function About() {
   return (
     <div>
       <h1 className="text-4xl mt-8 text-center font-bold">About</h1>
+      <figure>
+        <embed src="https://wakatime.com/share/@cbfef042-6778-4ec5-b8b3-d0bec476af37/65573729-452b-4545-9f28-f6711161e8a5.svg"></embed>
+      </figure>
       <h2 className="text-2xl mt-4 text-center font-semibold">Experience</h2>
       <div className="flex flex-col items-center justify-center">
         {experience.map((exp, key) => (

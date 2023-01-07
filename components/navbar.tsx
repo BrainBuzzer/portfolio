@@ -28,7 +28,7 @@ export default function Navbar() {
           </Link>
         </li> */}
         <li className="px-4 py-2">
-          <Link href="/contact" className={router.pathname === "/contacts" ? "font-bold underline" : ""}>
+          <Link href="/contact" className={router.pathname === "/contact" ? "font-bold underline" : ""}>
             Contact
           </Link>
         </li>

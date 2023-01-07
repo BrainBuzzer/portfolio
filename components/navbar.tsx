@@ -1,5 +1,3 @@
-import ThemeSwitcher from "./themeSwitchToggle";
-
 export default function Navbar() {
   return (
     <div className="flex flex-row justify-end">

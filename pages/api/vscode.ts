@@ -6,7 +6,7 @@ type Data = {
 };
 
 export default function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
-  let api_key = process.env.WAKATIME_API_KEY;
+  let api_key = process.env.WAKATIME_API_KEY ?? "";
 
   let authorization = Buffer.from(api_key).toString("base64");
 

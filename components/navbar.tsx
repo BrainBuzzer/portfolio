@@ -21,11 +21,12 @@ export default function Navbar() {
             About
           </Link>
         </li>
-        <li className="px-4 py-2">
+        {/* TODO: Add projects Section */}
+        {/* <li className="px-4 py-2">
           <Link href="/projects" className={router.pathname === "/projects" ? "font-bold underline" : ""}>
             Projects
           </Link>
-        </li>
+        </li> */}
         <li className="px-4 py-2">
           <Link href="/contact" className={router.pathname === "/contacts" ? "font-bold underline" : ""}>
             Contact

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
+import ThemeSwitcher from "./themeSwitchToggle";
 
 export default function Navbar() {
   const router = useRouter();
@@ -31,6 +32,9 @@ export default function Navbar() {
           <Link href="/contact" className={router.pathname === "/contact" ? "font-bold underline" : ""}>
             Contact
           </Link>
+        </li>
+        <li className="px-4 py-2">
+          <ThemeSwitcher />
         </li>
       </ul>
     </div>

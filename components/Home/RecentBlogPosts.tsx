@@ -20,8 +20,8 @@ export default function RecentBlogPosts({ posts }: { posts: Post[] }) {
             <Link href={`/blog/${post.slug}`} className="text-3xl font-bold pt-2">
               {post.frontmatter.title}
             </Link>
-            <h2 className="text-gray-900 text-lg pt-3">{post.frontmatter.excerpt}</h2>
-            <h2 className="text-gray-900 text-lg pt-3">
+            <h2 className="text-gray-900 dark:text-gray-300 text-lg pt-3">{post.frontmatter.excerpt}</h2>
+            <h2 className="text-gray-900 dark:text-gray-300 text-lg pt-3">
               <Link href={`/blog/${post.slug}`} className="underline">
                 Read more -&gt;
               </Link>

@@ -81,12 +81,12 @@ export default function About() {
             <div className="flex flex-row items-center justify-between w-full">
               <div className="flex flex-col items-start justify-start">
                 <h3 className="text-xl font-semibold">{exp.company}</h3>
-                <h4 className="text-lg">{exp.position}</h4>
-                <h5 className="text-md font-light text-gray-600">{exp.date}</h5>
+                <h4 className="text-lg dark:text-gray-300">{exp.position}</h4>
+                <h5 className="text-md font-light text-gray-600 dark:text-gray-400">{exp.date}</h5>
 
-                <p className="text-md mt-3">tldr; {exp.description}</p>
+                <p className="text-md mt-3 text-gray-700 dark:text-gray-200">tldr; {exp.description}</p>
 
-                <div className="mt-3">
+                <div className="mt-3 text-gray-700 dark:text-gray-200">
                   <ul className="list-disc">
                     {exp.longDescription.map((desc, longKey) => (
                       <li key={longKey} className="text-lg">
@@ -95,7 +95,7 @@ export default function About() {
                     ))}
                   </ul>
 
-                  <ul className="inline-flex gap-4 mt-2">
+                  <ul className="inline-flex gap-4 mt-2 text-gray-600 dark:text-gray-300">
                     {/* add , and show tech stack */}
                     {exp.techStack.map((tech, techKey) => (
                       <li key={techKey} className="text-md font-light">

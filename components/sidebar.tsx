@@ -43,7 +43,7 @@ export default function SideBar() {
   const router = useRouter();
   return (
     <aside
-      className={`mt-3 py-3 w-full md:sticky md:right-0 md:top-20 md:col-span-1 md:border-r-2 md:border-gray-400 ${
+      className={`mt-3 py-3 w-full md:sticky md:right-0 md:top-20 md:col-span-1 md:border-r-2 md:border-gray-400 md:dark:border-gray-700 ${
         size.width < 768 && router.pathname !== "/" ? "hidden md:block" : ""
       } sidebar`}
     >
@@ -59,14 +59,18 @@ export default function SideBar() {
               Online
             </span>
           </div>
-          <h2 className="text-gray-900 text-center text-lg pt-6">Programmer. Polyglot. YouTuber. Entrepreneur.</h2>
-          <h2 className="text-gray-900 text-center text-lg pt-6">Developing side projects for fun.</h2>
+          <h2 className="text-gray-900 dark:text-gray-300 text-center text-lg pt-6">
+            Programmer. Polyglot. YouTuber. Entrepreneur.
+          </h2>
+          <h2 className="text-gray-900 dark:text-gray-300 text-center text-lg pt-6">
+            Developing side projects for fun.
+          </h2>
 
-          <div className="border-t-2 w-full border-gray-400 mt-10"></div>
+          <div className="border-t-2 w-full border-gray-400 dark:border-gray-800 mt-10"></div>
 
           <Spotify />
 
-          <div className="border-t-2 border-gray-400 mt-4 w-full"></div>
+          <div className="border-t-2 border-gray-400 dark:border-gray-800 mt-4 w-full"></div>
 
           <VSCode />
         </div>

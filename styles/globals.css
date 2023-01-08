@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* @media (prefers-color-scheme: light) { */
 body {
   background-image: radial-gradient(#d8d8d8 1px, transparent 2px);
   background-color: #FAFAFA;
@@ -10,17 +9,13 @@ body {
   background-size: 30px 30px;
   background-attachment: fixed;
 }
-/* } */
-/* 
-@media (prefers-color-scheme: dark) {
-  body {
-    background-image: radial-gradient(#757575 1px, transparent 2px);
-    background-color: #212121;
-    background-position: 0 0 100px 100px;
-    background-size: 30px 30px;
-    background-attachment: fixed;
-  }
-} */
+body.dark-mode {
+  background-image: radial-gradient(#2e2e2e 1px, transparent 2px);
+  background-color: #000;
+  background-position: 0 0 100px 100px;
+  background-size: 30px 30px;
+  background-attachment: fixed;
+}
 
 .profile-pic {
   border-radius: 50%;

@@ -24,10 +24,10 @@ export default function Post({ frontmatter, content }: Props) {
         <link rel="icon" href="/favicon.ico" />
         <meta name="description" content={excerpt} />
       </Head>
-      <div className="text-center text-gray-400">{date}</div>
-      <h1 className="text-center text-4xl font-bold text-gray-900 pt-4">{title}</h1>
+      <div className="text-center text-gray-400 dark:text-gray-100">{date}</div>
+      <h1 className="text-center text-4xl font-bold text-gray-900 dark:text-gray-100 pt-4">{title}</h1>
       <div
-        className="prose prose-stone md:prose-md lg:prose-lg mx-auto mt-8"
+        className="prose prose-stone md:prose-md lg:prose-lg mx-auto mt-8 dark:prose-invert"
         dangerouslySetInnerHTML={{ __html: md().render(content) }}
       />
     </main>

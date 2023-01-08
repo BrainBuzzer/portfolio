@@ -31,14 +31,14 @@ export default function Home(props: Props) {
 
       <div className="flex flex-col items-center mt-10">
         <h1 className="text-4xl font-bold pt-8">Hi, I&apos;m Aditya Giri</h1>
-        <h2 className="text-gray-900 text-center text-lg pt-6">
+        <h2 className="text-gray-900 dark:text-gray-200 text-center text-lg pt-6">
           I&apos;m a programmer, polyglot, and YouTuber who builds tons of side projects and is very passionate about
           startups and engineering.
         </h2>
-        <h2 className="text-gray-900 text-center text-lg pt-6">
+        <h2 className="text-gray-900 dark:text-gray-200 text-center text-lg pt-6">
           I&apos;m currently working as a Backend Engineer at Classcard.
         </h2>
-        <div className="border-t border-gray-300 mt-8 w-full"></div>
+        <div className="border-t border-gray-300 dark:border-gray-700 mt-8 w-full"></div>
 
         <RecentBlogPosts posts={props.posts} />
       </div>

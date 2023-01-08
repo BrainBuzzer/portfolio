@@ -19,7 +19,7 @@ export default function Contact() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="mx-auto max-w-7xl py-16 px-6 sm:py-24 lg:px-8">
-        <div className="relative bg-white shadow-xl">
+        <div className="relative bg-white dark:bg-gray-900 shadow-xl">
           <h2 className="sr-only">Contact me</h2>
 
           <div className="grid grid-cols-1 lg:grid-cols-3">
@@ -181,10 +181,13 @@ export default function Contact() {
                 </div>
               ) : (
                 <>
-                  <h3 className="text-lg font-medium text-gray-900">Send me a message</h3>
+                  <h3 className="text-lg font-medium text-gray-900 dark:text-gray-100">Send me a message</h3>
                   <form onSubmit={handleSubmit} className="mt-6 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8">
                     <div>
-                      <label htmlFor="first-name" className="block text-sm font-medium text-gray-900">
+                      <label
+                        htmlFor="first-name"
+                        className="block text-sm font-medium text-gray-900 dark:text-gray-100"
+                      >
                         First name
                       </label>
                       <div className="mt-1">
@@ -198,7 +201,7 @@ export default function Contact() {
                       </div>
                     </div>
                     <div>
-                      <label htmlFor="last-name" className="block text-sm font-medium text-gray-900">
+                      <label htmlFor="last-name" className="block text-sm font-medium text-gray-900 dark:text-gray-100">
                         Last name
                       </label>
                       <div className="mt-1">
@@ -212,7 +215,7 @@ export default function Contact() {
                       </div>
                     </div>
                     <div>
-                      <label htmlFor="email" className="block text-sm font-medium text-gray-900">
+                      <label htmlFor="email" className="block text-sm font-medium text-gray-900 dark:text-gray-100">
                         Email
                       </label>
                       <div className="mt-1">
@@ -227,7 +230,7 @@ export default function Contact() {
                     </div>
                     <div>
                       <div className="flex justify-between">
-                        <label htmlFor="phone" className="block text-sm font-medium text-gray-900">
+                        <label htmlFor="phone" className="block text-sm font-medium text-gray-900 dark:text-gray-100">
                           Phone
                         </label>
                         <span id="phone-optional" className="text-sm text-gray-500">
@@ -246,7 +249,7 @@ export default function Contact() {
                       </div>
                     </div>
                     <div className="sm:col-span-2">
-                      <label htmlFor="subject" className="block text-sm font-medium text-gray-900">
+                      <label htmlFor="subject" className="block text-sm font-medium text-gray-900 dark:text-gray-100">
                         Subject
                       </label>
                       <div className="mt-1">
@@ -260,7 +263,7 @@ export default function Contact() {
                     </div>
                     <div className="sm:col-span-2">
                       <div className="flex justify-between">
-                        <label htmlFor="message" className="block text-sm font-medium text-gray-900">
+                        <label htmlFor="message" className="block text-sm font-medium text-gray-900 dark:text-gray-100">
                           Message
                         </label>
                         <span id="message-max" className="text-sm text-gray-500">

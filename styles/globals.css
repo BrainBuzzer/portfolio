@@ -24,12 +24,12 @@ body.dark-mode {
 }
 
 .sidebar {
-  height: "91vh"
+  height: 91vh;
 }
 
 
 .sidebar-div {
-  height: "90vh"
+  height: 90vh;
 }
 
 @media screen and (max-width: 768px) {

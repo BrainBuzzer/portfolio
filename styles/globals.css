@@ -27,3 +27,22 @@ body {
   width: 80%;
   margin: 0 auto;
 }
+
+.sidebar {
+  height: "91vh"
+}
+
+
+.sidebar-div {
+  height: "90vh"
+}
+
+@media screen and (max-width: 768px) {
+  .sidebar {
+    height: "auto"
+  }
+  .sidebar-div {
+    height: "auto"
+  }
+}
+

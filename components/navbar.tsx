@@ -4,8 +4,8 @@ import { useRouter } from "next/router";
 export default function Navbar() {
   const router = useRouter();
   return (
-    <div className="flex flex-row justify-end">
-      <ul className="flex flex-row gap-12">
+    <div className="flex flex-row md:justify-end justify-center">
+      <ul className="flex flex-row md:gap-12">
         <li className="px-4 py-2">
           <Link href="/" className={router.pathname === "/" ? "font-bold underline" : ""}>
             Home

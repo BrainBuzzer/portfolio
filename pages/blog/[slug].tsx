@@ -1,7 +1,8 @@
 import fs from "fs";
 import matter from "gray-matter";
-import md from "markdown-it";
 import Head from "next/head";
+import ReactMarkdown from "react-markdown";
+import rehypeHighlight from "rehype-highlight";
 
 interface Props {
   frontmatter: {
@@ -23,13 +24,19 @@ export default function Post({ frontmatter, content }: Props) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
         <meta name="description" content={excerpt} />
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/base16/onedark.min.css"
+        ></link>
       </Head>
       <div className="text-center text-gray-400 dark:text-gray-100">{date}</div>
       <h1 className="text-center text-4xl font-bold text-gray-900 dark:text-gray-100 pt-4">{title}</h1>
-      <div
-        className="prose prose-stone md:prose-md lg:prose-lg mx-auto mt-8 dark:prose-invert"
-        dangerouslySetInnerHTML={{ __html: md().render(content) }}
-      />
+      <ReactMarkdown
+        className="prose prose-stone md:prose-md lg:prose-lg mx-auto mt-8 dark:prose-invert dark:prose-pre:bg-neutral-900 prose-pre:bg-zinc-900"
+        rehypePlugins={[rehypeHighlight]}
+      >
+        {content}
+      </ReactMarkdown>
     </main>
   );
 }

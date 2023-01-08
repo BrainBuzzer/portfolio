@@ -23,25 +23,28 @@ export default function OnlineCheck() {
     );
   }
 
-  const lastOnlineTime = parse(data.lastOnlineTime, "yyyy-MM-dd HH:mm:ss.SSSSSSSSS XXX", new Date());
+  let lastOnlineTime = new Date();
 
-  if (diffInMin(new Date(), lastOnlineTime) > 5) {
+  if (data && data.lastOnlineTime) {
+    lastOnlineTime = parse(data.lastOnlineTime, "yyyy-MM-dd HH:mm:ss.SSSSSSSSS XXX", new Date());
+  }
+
+  if (lastOnlineTime && diffInMin(new Date(), lastOnlineTime) < 5) {
     return (
-      <span className="mt-3 inline-flex items-center rounded-full bg-red-100 px-3 py-0.5 text-sm font-medium text-red-800">
-        <svg className="-ml-1 mr-1.5 h-2 w-2 text-red-400" fill="currentColor" viewBox="0 0 8 8">
+      <span className="mt-3 inline-flex items-center rounded-full bg-green-100 px-3 py-0.5 text-sm font-medium text-green-800">
+        <svg className="-ml-1 mr-1.5 h-2 w-2 text-green-400" fill="currentColor" viewBox="0 0 8 8">
           <circle cx={4} cy={4} r={3} />
         </svg>
-        Currently Offline
+        Currently Online
       </span>
     );
   }
-
   return (
-    <span className="mt-3 inline-flex items-center rounded-full bg-green-100 px-3 py-0.5 text-sm font-medium text-green-800">
-      <svg className="-ml-1 mr-1.5 h-2 w-2 text-green-400" fill="currentColor" viewBox="0 0 8 8">
+    <span className="mt-3 inline-flex items-center rounded-full bg-red-100 px-3 py-0.5 text-sm font-medium text-red-800">
+      <svg className="-ml-1 mr-1.5 h-2 w-2 text-red-400" fill="currentColor" viewBox="0 0 8 8">
         <circle cx={4} cy={4} r={3} />
       </svg>
-      Currently Online
+      Currently Offline
     </span>
   );
 }

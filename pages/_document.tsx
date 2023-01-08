@@ -7,7 +7,7 @@ export default function Document() {
         <link rel="preconnect" href="https://rsms.me/" />
         <link rel="stylesheet" href="https://rsms.me/inter/inter.css"></link>
       </Head>
-      <body>
+      <body className="transition duration-300">
         <Main />
         <NextScript />
       </body>

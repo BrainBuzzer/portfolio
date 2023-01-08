@@ -6,6 +6,7 @@ import VSCode from "./Sidebar/VSCode";
 import Spotify from "./Sidebar/Spotify";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import OnlineCheck from "./Sidebar/OnlineCheck";
 
 interface WindowSize {
   width: number;
@@ -52,12 +53,7 @@ export default function SideBar() {
           <Image src={profilePic} alt="Profile Picture" placeholder="blur" className="profile-pic" />
           <h1 className="text-4xl font-bold pt-8 w-full text-center">Aditya Giri</h1>
           <div className="w-full flex justify-center items-center">
-            <span className="mt-3 inline-flex items-center rounded-full bg-green-100 px-3 py-0.5 text-sm font-medium text-green-800">
-              <svg className="-ml-1 mr-1.5 h-2 w-2 text-green-400" fill="currentColor" viewBox="0 0 8 8">
-                <circle cx={4} cy={4} r={3} />
-              </svg>
-              Online
-            </span>
+            <OnlineCheck />
           </div>
           <h2 className="text-gray-900 dark:text-gray-300 text-center text-lg pt-6">
             Programmer. Polyglot. YouTuber. Entrepreneur.

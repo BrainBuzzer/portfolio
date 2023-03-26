@@ -10,8 +10,9 @@ body {
   background-attachment: fixed;
 }
 body.dark-mode {
-  background-image: radial-gradient(#2e2e2e 1px, transparent 2px);
-  background-color: #000;
+  background-image: radial-gradient(#3c4146, 1px, transparent 2px);
+    /* blur the background image */
+    background-color: #252931;
   background-position: 0 0 100px 100px;
   background-size: 30px 30px;
   background-attachment: fixed;

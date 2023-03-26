@@ -1,7 +1,5 @@
 import Head from "next/head";
 import RecentBlogPosts from "../components/Home/RecentBlogPosts";
-import Navbar from "../components/navbar";
-import SideBar from "../components/sidebar";
 import fs from "fs";
 import matter from "gray-matter";
 
@@ -50,8 +48,9 @@ export default function Home(props: Props) {
 export async function getStaticProps() {
   // get list of files from the posts folder
   const files = fs.readdirSync("posts");
+
+  // get frontmatter & slug from each post
   const posts = files.map((fileName, index) => {
-    if (index > 2) return;
     const slug = fileName.replace(".md", "");
     const readFile = fs.readFileSync(`posts/${fileName}`, "utf-8");
     const { data: frontmatter } = matter(readFile);
@@ -60,6 +59,10 @@ export async function getStaticProps() {
       slug,
       frontmatter,
     };
+  });
+
+  posts.sort((a, b) => {
+    return new Date(b.frontmatter.date).getTime() - new Date(a.frontmatter.date).getTime();
   });
 
   return {

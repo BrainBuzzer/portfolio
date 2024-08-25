@@ -12,9 +12,24 @@ interface ExperienceProps {
 
 const experience: ExperienceProps[] = [
   {
+    company: "Angkas",
+    position: "Senior Software Engineer",
+    date: "Jun 2023 - Present",
+    shortDescription: "Worked as software engineer at Angkas helping rewrite the backend systems.",
+    description:
+      "Worked as a software engineer at Angkas helping rewrite the backend systems. The systems handle about 100,000+ requests per minute. I was responsible for working on core trip management and matchmaking.",
+    longDescription: [
+      "Built scalable systems that handle 100,000+ requests per minute",
+      "Architected and implemented core trip management and matchmaking",
+      "Refactored the codebase to improve performance and maintainability",
+      "Added telemetry and monitoring to the backend systems",
+    ],
+    techStack: ["Golang", "Kafka", "AlloyDB", "Redis", "Kubernetes", "Prometheus", "Grafana"],
+  },
+  {
     company: "Classcard",
     position: "Software Engineer",
-    date: "Dec 2022 - Present",
+    date: "Dec 2022 - Jun 2024",
     shortDescription: "Worked as a software engineer at Classcard helping build backend systems.",
     description:
       "Worked as a software engineer at Classcard helping build backend systems. I worked on the backend of the web application, which is built with Laravel. I also worked on the database, which is built with MySQL.",

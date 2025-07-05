@@ -14,7 +14,7 @@ interface Post {
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   try {
     // Get site URL from environment or use localhost for development
-    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
+    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://brainbuzzer.me';
     
     // Create RSS feed
     const feed = new RSS({

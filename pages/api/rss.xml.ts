@@ -13,8 +13,10 @@ interface Post {
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   try {
-    // Get site URL from environment or use localhost for development
-    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://brainbuzzer.me';
+    // Get site URL from environment or use production URL
+    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 
+                   process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 
+                   'https://brainbuzzer.me';
     
     // Create RSS feed
     const feed = new RSS({
@@ -56,6 +58,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     posts.forEach((post) => {
       const { title, date, excerpt, author, category } = post.frontmatter;
       
+      // Skip posts without required fields
+      if (!title || !date || !excerpt) {
+        console.warn(`Skipping post ${post.slug} - missing required fields`);
+        return;
+      }
+      
       feed.item({
         title: title,
         description: excerpt,
@@ -73,7 +81,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     // Set the correct content type and cache headers
     res.setHeader('Content-Type', 'application/rss+xml; charset=UTF-8');
     res.setHeader('Cache-Control', 'public, max-age=3600, s-maxage=3600'); // Cache for 1 hour
-    res.status(200).send(rssXml);
+    res.status(200).end(rssXml);
 
   } catch (error) {
     console.error('Error generating RSS feed:', error);

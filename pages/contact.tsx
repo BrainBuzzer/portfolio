@@ -145,19 +145,19 @@ export default function Contact() {
                 <li>
                   <a className="text-gray-200 hover:text-gray-100" href="https://linkedin.com/in/giriaditya">
                     <span className="sr-only">LinkedIn</span>
-                    <FontAwesomeIcon icon={faLinkedinIn} className="h-6 w-6" />
+                    <FontAwesomeIcon icon={faLinkedinIn as any} className="h-6 w-6" />
                   </a>
                 </li>
                 <li>
                   <a className="text-gray-200 hover:text-gray-100" href="#">
                     <span className="sr-only">GitHub</span>
-                    <FontAwesomeIcon icon={faGithub} className="h-6 w-6" />
+                    <FontAwesomeIcon icon={faGithub as any} className="h-6 w-6" />
                   </a>
                 </li>
                 <li>
                   <a className="text-gray-200 hover:text-gray-100" href="#">
                     <span className="sr-only">YouTube</span>
-                    <FontAwesomeIcon icon={faYoutube} className="h-6 w-6" />
+                    <FontAwesomeIcon icon={faYoutube as any} className="h-6 w-6" />
                   </a>
                 </li>
               </ul>
@@ -169,7 +169,7 @@ export default function Contact() {
                 <div className="rounded-md bg-green-50 p-4">
                   <div className="flex">
                     <div className="flex-shrink-0">
-                      <FontAwesomeIcon icon={faCircleCheck} className="h-5 w-5 text-green-400" aria-hidden="true" />
+                      <FontAwesomeIcon icon={faCircleCheck as any} className="h-5 w-5 text-green-400" aria-hidden="true" />
                     </div>
                     <div className="ml-3">
                       <h3 className="text-sm font-medium text-green-800">Message sent successfully</h3>

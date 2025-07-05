@@ -8,6 +8,7 @@ import Spotify from "./Sidebar/Spotify";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import OnlineCheck from "./Sidebar/OnlineCheck";
+import Link from "next/link";
 
 interface WindowSize {
   width: number;
@@ -81,9 +82,9 @@ export default function SideBar() {
           <a href="https://www.linkedin.com/in/giriaditya">
             <FontAwesomeIcon icon={faLinkedinIn as any} height="30" />
           </a>
-          <a href="/api/rss.xml">
+          <Link href="/api/rss.xml">
             <FontAwesomeIcon icon={faRss as any} height="30" />
-          </a>
+          </Link>
         </div>
       </div>
     </aside>

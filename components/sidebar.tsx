@@ -1,4 +1,5 @@
 import { faGithub, faLinkedinIn, faYoutube } from "@fortawesome/free-brands-svg-icons";
+import { faRss } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
 import profilePic from "../public/profile-pic.png";
@@ -44,9 +45,8 @@ export default function SideBar() {
   const router = useRouter();
   return (
     <aside
-      className={`mt-3 py-3 w-full md:sticky md:right-0 md:top-20 md:col-span-1 md:border-r-2 md:border-gray-400 md:dark:border-gray-700 ${
-        size.width < 768 && router.pathname !== "/" ? "hidden md:block" : ""
-      } sidebar`}
+      className={`mt-3 py-3 w-full md:sticky md:right-0 md:top-20 md:col-span-1 md:border-r-2 md:border-gray-400 md:dark:border-gray-700 ${size.width < 768 && router.pathname !== "/" ? "hidden md:block" : ""
+        } sidebar`}
     >
       <div className="flex flex-col items-center w-3/4 mx-auto justify-between sidebar-div">
         <div>
@@ -73,13 +73,16 @@ export default function SideBar() {
 
         <div className="flex w-full flex-row justify-around py-6">
           <a href="https://www.youtube.com/@BrainBuzzer">
-            <FontAwesomeIcon icon={faYoutube} height="30" />
+            <FontAwesomeIcon icon={faYoutube as any} height="30" />
           </a>
           <a href="https://www.github.com/BrainBuzzer">
-            <FontAwesomeIcon icon={faGithub} height="30" />
+            <FontAwesomeIcon icon={faGithub as any} height="30" />
           </a>
           <a href="https://www.linkedin.com/in/giriaditya">
-            <FontAwesomeIcon icon={faLinkedinIn} height="30" />
+            <FontAwesomeIcon icon={faLinkedinIn as any} height="30" />
+          </a>
+          <a href="/api/rss.xml">
+            <FontAwesomeIcon icon={faRss as any} height="30" />
           </a>
         </div>
       </div>

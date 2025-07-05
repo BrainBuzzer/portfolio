@@ -1,5 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import fs from 'fs';
+import path from 'path';
 import matter from 'gray-matter';
 import RSS from 'rss';
 
@@ -31,12 +32,13 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     });
 
     // Get list of files from the posts folder
-    const files = fs.readdirSync("posts");
+    const postsDirectory = path.join(process.cwd(), 'posts');
+    const files = fs.readdirSync(postsDirectory).filter(file => file.endsWith('.md'));
 
     // Get frontmatter & slug from each post
     const posts: Post[] = files.map((fileName) => {
       const slug = fileName.replace(".md", "");
-      const readFile = fs.readFileSync(`posts/${fileName}`, "utf-8");
+      const readFile = fs.readFileSync(path.join(postsDirectory, fileName), "utf-8");
       const { data: frontmatter } = matter(readFile);
 
       return {

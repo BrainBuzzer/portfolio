@@ -18,41 +18,34 @@ export default function Blog(props: Props) {
   return (
     <>
       <Head>
-        <title>Blog - Aditya Giri</title>
-        <meta
-          name="description"
-          content="Portfolio for Aditya Giri. Programmer, Polyglot, and YouTuber who builds tons of side projects and is very passionate about startups and engineering."
-        />
+        <title>Transmissions // Aditya Giri</title>
+        <meta name="description" content="Blog posts by Aditya Giri." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="flex flex-col items-center mt-10">
+      <div className="flex flex-col items-center mt-10 w-full max-w-4xl mx-auto px-4">
+        <h1 className="text-4xl font-bold text-white mb-2 font-mono tracking-tighter self-start">
+          ALL<span className="text-neon-cyan">.TRANSMISSIONS</span>
+        </h1>
+        <div className="h-1 w-20 bg-neon-cyan mb-12 shadow-[0_0_10px_#00f3ff] self-start"></div>
+        
         <RecentBlogPosts posts={props.posts} />
       </div>
     </>
   );
 }
 
-//Generating the Static Props for the Blog Page
 export async function getStaticProps() {
-  // get list of files from the posts folder
   const files = fs.readdirSync("posts");
-
-  // get frontmatter & slug from each post
   const posts = files.map((fileName) => {
     const slug = fileName.replace(".md", "");
     const readFile = fs.readFileSync(`posts/${fileName}`, "utf-8");
     const { data: frontmatter } = matter(readFile);
-
     return {
       slug,
       frontmatter,
     };
-  });
-
-  posts.sort((a, b) => {
-    return new Date(b.frontmatter.date).getTime() - new Date(a.frontmatter.date).getTime();
   });
 
   return {

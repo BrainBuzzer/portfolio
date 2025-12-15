@@ -1,5 +1,8 @@
 import Head from "next/head";
 import RecentBlogPosts from "../components/Home/RecentBlogPosts";
+import NeonCard from "../components/ui/NeonCard";
+import Typewriter from "../components/ui/Typewriter";
+import { cn } from "../utils/cn";
 import fs from "fs";
 import matter from "gray-matter";
 
@@ -14,31 +17,61 @@ interface Props {
   }[];
 }
 
+const techStack = [
+    "Next.js", "React", "TypeScript", "TailwindRef", "Node.js", "Go", "Rust", "AWS", "Docker", "Kubernetes", "GraphQL", "PostgreSQL"
+];
+
 export default function Home(props: Props) {
   return (
     <>
       <Head>
-        <title>Aditya Giri</title>
+        <title>Aditya Giri // Orbital Terminal</title>
         <meta
           name="description"
-          content="Portfolio for Aditya Giri. Programmer, Polyglot, and YouTuber who builds tons of side projects and is very passionate about startups and engineering."
+          content="Aditya Giri - Developer & Polyglot Engineer."
         />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="flex flex-col items-center mt-10">
-        <h1 className="text-4xl font-bold pt-8">Hi, I&apos;m Aditya Giri</h1>
-        <h2 className="text-gray-900 dark:text-gray-200 text-center text-lg pt-6">
-          I&apos;m a programmer, polyglot, and YouTuber who builds tons of side projects and is very passionate about
-          startups and engineering.
-        </h2>
-        <h2 className="text-gray-900 dark:text-gray-200 text-center text-lg pt-6">
-          I&apos;m currently working as a Backend Engineer at Classcard.
-        </h2>
-        <div className="border-t border-gray-300 dark:border-gray-700 mt-8 w-full"></div>
+      <div className="flex flex-col items-center justify-center w-full relative min-h-[80vh]">
+        
+        <div className="flex flex-col items-center justify-center z-10 w-full pt-20 pb-20">
+            <div className="inline-block mb-4 px-3 py-1 rounded-full border border-neon-cyan/30 bg-neon-cyan/5 text-neon-cyan text-xs font-mono tracking-widest">
+                SYSTEM_READY
+            </div>
+            
+            <h1 className="text-5xl md:text-8xl font-bold text-center tracking-tighter mb-6 bg-clip-text text-transparent bg-gradient-to-b from-white to-zinc-500">
+              ADITYA GIRI
+            </h1>
+            
+            <div className="text-lg md:text-2xl font-mono text-neon-purple mt-2 mb-8 h-8">
+                <span className="text-zinc-500 mr-2">&gt;</span>
+                <Typewriter text="Developer_ " delay={100} />
+            </div>
 
-        <RecentBlogPosts posts={props.posts} />
+            <p className="mt-4 font-normal text-base text-zinc-400 max-w-lg text-center mx-auto leading-relaxed">
+              Constructing digital infrastructure for the next frontier. 
+              Polyglot engineer passionate about systems, startups, and stellar interfaces.
+              Currently deploying code at <span className="text-zinc-200 font-bold">Classcard</span>.
+            </p>
+
+            <div className="grid grid-cols-3 md:grid-cols-6 gap-3 mt-12">
+                {techStack.map((tech) => (
+                    <div key={tech} className="px-3 py-2 rounded border border-zinc-800 bg-space-900/50 text-xs text-zinc-400 font-mono text-center hover:border-neon-cyan/50 hover:text-neon-cyan transition-colors cursor-crosshair">
+                        {tech}
+                    </div>
+                ))}
+            </div>
+        </div>
+
+        <div className="w-full max-w-4xl mx-auto px-4 mt-12 mb-20">
+           <div className="flex items-center mb-8">
+               <div className="h-px bg-zinc-800 flex-grow"></div>
+               <span className="px-4 font-mono text-zinc-500 text-sm">TRANSMISSIONS</span>
+               <div className="h-px bg-zinc-800 flex-grow"></div>
+           </div>
+           
+           <RecentBlogPosts posts={props.posts} />
+        </div>
       </div>
     </>
   );

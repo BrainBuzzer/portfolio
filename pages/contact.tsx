@@ -1,301 +1,88 @@
-import { faGithub, faLinkedinIn, faYoutube } from "@fortawesome/free-brands-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { EnvelopeIcon, PhoneIcon } from "@heroicons/react/24/outline";
-import { useForm } from "@formspree/react";
-import { faCircleCheck } from "@fortawesome/free-regular-svg-icons";
 import Head from "next/head";
+import React from "react";
+import NeonCard from "../components/ui/NeonCard";
 
 export default function Contact() {
-  const [state, handleSubmit] = useForm("xwkjkrvp");
   return (
-    <div className="rounded mt-8">
+    <>
       <Head>
-        <title>Contact - Aditya Giri</title>
-        <meta
-          name="description"
-          content="Portfolio for Aditya Giri. Programmer, Polyglot, and YouTuber who builds tons of side projects and is very passionate about startups and engineering."
-        />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
+        <title>Comms Uplink // Aditya Giri</title>
+        <meta name="description" content="Contact Aditya Giri." />
       </Head>
-      <div className="mx-auto max-w-7xl py-16 px-6 sm:py-24 lg:px-8">
-        <div className="relative bg-white dark:bg-gray-900 shadow-xl">
-          <h2 className="sr-only">Contact me</h2>
+      <div className="max-w-4xl mx-auto flex flex-col md:flex-row gap-12 text-zinc-300">
+        
+        <div className="md:w-1/2">
+             <h1 className="text-4xl font-bold text-white mb-2 font-mono tracking-tighter">
+              COMMS<span className="text-neon-cyan">.UPLINK</span>
+            </h1>
+            <div className="h-1 w-20 bg-neon-cyan mb-8 shadow-[0_0_10px_#00f3ff]"></div>
+            
+            <p className="text-lg mb-8 leading-relaxed">
+                Open to transmissions regarding: <br/>
+                <span className="text-neon-green font-mono">&gt; Collaboration</span><br/>
+                <span className="text-neon-cyan font-mono">&gt; Freelance Ops</span><br/>
+                <span className="text-neon-purple font-mono">&gt; Tech Discussions</span>
+            </p>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3">
-            {/* Contact information */}
-            <div className="relative overflow-hidden bg-gray-700 py-10 px-6 sm:px-10 xl:p-12">
-              <div className="pointer-events-none absolute inset-0 sm:hidden" aria-hidden="true">
-                <svg
-                  className="absolute inset-0 h-full w-full"
-                  width={343}
-                  height={388}
-                  viewBox="0 0 343 388"
-                  fill="none"
-                  preserveAspectRatio="xMidYMid slice"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M-99 461.107L608.107-246l707.103 707.107-707.103 707.103L-99 461.107z"
-                    fill="url(#linear1)"
-                    fillOpacity=".1"
-                  />
-                  <defs>
-                    <linearGradient
-                      id="linear1"
-                      x1="254.553"
-                      y1="107.554"
-                      x2="961.66"
-                      y2="814.66"
-                      gradientUnits="userSpaceOnUse"
-                    >
-                      <stop stopColor="#fff" />
-                      <stop offset={1} stopColor="#fff" stopOpacity={0} />
-                    </linearGradient>
-                  </defs>
-                </svg>
-              </div>
-              <div
-                className="pointer-events-none absolute top-0 right-0 bottom-0 hidden w-1/2 sm:block lg:hidden"
-                aria-hidden="true"
-              >
-                <svg
-                  className="absolute inset-0 h-full w-full"
-                  width={359}
-                  height={339}
-                  viewBox="0 0 359 339"
-                  fill="none"
-                  preserveAspectRatio="xMidYMid slice"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M-161 382.107L546.107-325l707.103 707.107-707.103 707.103L-161 382.107z"
-                    fill="url(#linear2)"
-                    fillOpacity=".1"
-                  />
-                  <defs>
-                    <linearGradient
-                      id="linear2"
-                      x1="192.553"
-                      y1="28.553"
-                      x2="899.66"
-                      y2="735.66"
-                      gradientUnits="userSpaceOnUse"
-                    >
-                      <stop stopColor="#fff" />
-                      <stop offset={1} stopColor="#fff" stopOpacity={0} />
-                    </linearGradient>
-                  </defs>
-                </svg>
-              </div>
-              <div
-                className="pointer-events-none absolute top-0 right-0 bottom-0 hidden w-1/2 lg:block"
-                aria-hidden="true"
-              >
-                <svg
-                  className="absolute inset-0 h-full w-full"
-                  width={160}
-                  height={678}
-                  viewBox="0 0 160 678"
-                  fill="none"
-                  preserveAspectRatio="xMidYMid slice"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M-161 679.107L546.107-28l707.103 707.107-707.103 707.103L-161 679.107z"
-                    fill="url(#linear3)"
-                    fillOpacity=".1"
-                  />
-                  <defs>
-                    <linearGradient
-                      id="linear3"
-                      x1="192.553"
-                      y1="325.553"
-                      x2="899.66"
-                      y2="1032.66"
-                      gradientUnits="userSpaceOnUse"
-                    >
-                      <stop stopColor="#fff" />
-                      <stop offset={1} stopColor="#fff" stopOpacity={0} />
-                    </linearGradient>
-                  </defs>
-                </svg>
-              </div>
-              <h3 className="text-lg font-medium text-white">Contact information</h3>
-              <p className="mt-6 max-w-3xl text-base text-gray-50">
-                You can get in touch with me via email, or by just filling out the form.
-              </p>
-              <dl className="mt-8 space-y-6">
-                <dt>
-                  <span className="sr-only">Phone number</span>
-                </dt>
-                <dd className="flex text-base text-gray-50">
-                  <PhoneIcon className="h-6 w-6 flex-shrink-0 text-gray-200" aria-hidden="true" />
-                  <span className="ml-3">+91 96373 05012</span>
-                </dd>
-                <dt>
-                  <span className="sr-only">Email</span>
-                </dt>
-                <dd className="flex text-base text-gray-50">
-                  <EnvelopeIcon className="h-6 w-6 flex-shrink-0 text-gray-200" aria-hidden="true" />
-                  <span className="ml-3">mail@brainbuzzer.me</span>
-                </dd>
-              </dl>
-              <ul role="list" className="mt-8 flex space-x-12">
-                <li>
-                  <a className="text-gray-200 hover:text-gray-100" href="https://linkedin.com/in/giriaditya">
-                    <span className="sr-only">LinkedIn</span>
-                    <FontAwesomeIcon icon={faLinkedinIn as any} className="h-6 w-6" />
-                  </a>
-                </li>
-                <li>
-                  <a className="text-gray-200 hover:text-gray-100" href="#">
-                    <span className="sr-only">GitHub</span>
-                    <FontAwesomeIcon icon={faGithub as any} className="h-6 w-6" />
-                  </a>
-                </li>
-                <li>
-                  <a className="text-gray-200 hover:text-gray-100" href="#">
-                    <span className="sr-only">YouTube</span>
-                    <FontAwesomeIcon icon={faYoutube as any} className="h-6 w-6" />
-                  </a>
-                </li>
-              </ul>
-            </div>
+            <div className="space-y-4">
+                 <NeonCard className="flex items-center space-x-4 cursor-pointer hover:bg-space-900 group" glowColor="cyan">
+                    <div className="w-10 h-10 rounded bg-space-950 flex items-center justify-center border border-zinc-800 text-neon-cyan group-hover:border-neon-cyan transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                    </div>
+                    <div>
+                        <p className="text-xs text-zinc-500 font-mono">EMAIL_PROTOCOL</p>
+                        <p className="text-white group-hover:text-neon-cyan transition-colors">aditya@example.com</p>
+                    </div>
+                 </NeonCard>
 
-            {/* Contact form */}
-            <div className="py-10 px-6 sm:px-10 lg:col-span-2 xl:p-12">
-              {state.succeeded ? (
-                <div className="rounded-md bg-green-50 p-4">
-                  <div className="flex">
-                    <div className="flex-shrink-0">
-                      <FontAwesomeIcon icon={faCircleCheck as any} className="h-5 w-5 text-green-400" aria-hidden="true" />
-                    </div>
-                    <div className="ml-3">
-                      <h3 className="text-sm font-medium text-green-800">Message sent successfully</h3>
-                      <div className="mt-2 text-sm text-green-700">
-                        <p>I&apos;ll get back to you as soon as possible.</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              ) : (
-                <>
-                  <h3 className="text-lg font-medium text-gray-900 dark:text-gray-100">Send me a message</h3>
-                  <form onSubmit={handleSubmit} className="mt-6 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8">
-                    <div>
-                      <label
-                        htmlFor="first-name"
-                        className="block text-sm font-medium text-gray-900 dark:text-gray-100"
-                      >
-                        First name
-                      </label>
-                      <div className="mt-1">
-                        <input
-                          type="text"
-                          name="first-name"
-                          id="first-name"
-                          autoComplete="given-name"
-                          className="block w-full rounded-md border-gray-300 py-3 px-4 text-gray-900 shadow-sm focus:border-gray-500 focus:ring-gray-500"
-                        />
-                      </div>
+                 <NeonCard className="flex items-center space-x-4 cursor-pointer hover:bg-space-900 group" glowColor="purple">
+                     <div className="w-10 h-10 rounded bg-space-950 flex items-center justify-center border border-zinc-800 text-neon-purple group-hover:border-neon-purple transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
                     </div>
                     <div>
-                      <label htmlFor="last-name" className="block text-sm font-medium text-gray-900 dark:text-gray-100">
-                        Last name
-                      </label>
-                      <div className="mt-1">
-                        <input
-                          type="text"
-                          name="last-name"
-                          id="last-name"
-                          autoComplete="family-name"
-                          className="block w-full rounded-md border-gray-300 py-3 px-4 text-gray-900 shadow-sm focus:border-gray-500 focus:ring-gray-500"
-                        />
-                      </div>
+                        <p className="text-xs text-zinc-500 font-mono">CODE_REPOSITORY</p>
+                        <a href="https://github.com/BrainBuzzer" target="_blank" rel="noreferrer" className="text-white group-hover:text-neon-purple transition-colors">github.com/BrainBuzzer</a>
+                    </div>
+                 </NeonCard>
+                 
+                 <NeonCard className="flex items-center space-x-4 cursor-pointer hover:bg-space-900 group" glowColor="green">
+                     <div className="w-10 h-10 rounded bg-space-950 flex items-center justify-center border border-zinc-800 text-neon-green group-hover:border-neon-green transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg>
                     </div>
                     <div>
-                      <label htmlFor="email" className="block text-sm font-medium text-gray-900 dark:text-gray-100">
-                        Email
-                      </label>
-                      <div className="mt-1">
-                        <input
-                          id="email"
-                          name="email"
-                          type="email"
-                          autoComplete="email"
-                          className="block w-full rounded-md border-gray-300 py-3 px-4 text-gray-900 shadow-sm focus:border-gray-500 focus:ring-gray-500"
-                        />
-                      </div>
+                        <p className="text-xs text-zinc-500 font-mono">SHORT_MESSAGE_SVC</p>
+                        <a href="https://x.com/BrainBuzzerMe" target="_blank" rel="noreferrer" className="text-white group-hover:text-neon-green transition-colors">x.com/BrainBuzzerMe</a>
                     </div>
-                    <div>
-                      <div className="flex justify-between">
-                        <label htmlFor="phone" className="block text-sm font-medium text-gray-900 dark:text-gray-100">
-                          Phone
-                        </label>
-                        <span id="phone-optional" className="text-sm text-gray-500">
-                          Optional
-                        </span>
-                      </div>
-                      <div className="mt-1">
-                        <input
-                          type="text"
-                          name="phone"
-                          id="phone"
-                          autoComplete="tel"
-                          className="block w-full rounded-md border-gray-300 py-3 px-4 text-gray-900 shadow-sm focus:border-gray-500 focus:ring-gray-500"
-                          aria-describedby="phone-optional"
-                        />
-                      </div>
-                    </div>
-                    <div className="sm:col-span-2">
-                      <label htmlFor="subject" className="block text-sm font-medium text-gray-900 dark:text-gray-100">
-                        Subject
-                      </label>
-                      <div className="mt-1">
-                        <input
-                          type="text"
-                          name="subject"
-                          id="subject"
-                          className="block w-full rounded-md border-gray-300 py-3 px-4 text-gray-900 shadow-sm focus:border-gray-500 focus:ring-gray-500"
-                        />
-                      </div>
-                    </div>
-                    <div className="sm:col-span-2">
-                      <div className="flex justify-between">
-                        <label htmlFor="message" className="block text-sm font-medium text-gray-900 dark:text-gray-100">
-                          Message
-                        </label>
-                        <span id="message-max" className="text-sm text-gray-500">
-                          Max. 500 characters
-                        </span>
-                      </div>
-                      <div className="mt-1">
-                        <textarea
-                          id="message"
-                          name="message"
-                          rows={4}
-                          className="block w-full rounded-md border-gray-300 py-3 px-4 text-gray-900 shadow-sm focus:border-gray-500 focus:ring-gray-500"
-                          aria-describedby="message-max"
-                          defaultValue={""}
-                        />
-                      </div>
-                    </div>
-                    <div className="sm:col-span-2 sm:flex sm:justify-end">
-                      <button
-                        type="submit"
-                        className="mt-2 inline-flex w-full items-center justify-center rounded-md border border-transparent bg-gray-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 sm:w-auto"
-                      >
-                        Submit
-                      </button>
-                    </div>
-                  </form>
-                </>
-              )}
+                 </NeonCard>
             </div>
-          </div>
         </div>
+
+        <div className="md:w-1/2">
+             <NeonCard className="h-full">
+                <h3 className="text-xl font-bold text-white mb-6 font-mono border-b border-zinc-800 pb-2">
+                    SEND_TRANSMISSION
+                </h3>
+                <form className="space-y-6">
+                    <div>
+                        <label htmlFor="name" className="block text-xs font-mono text-neon-cyan mb-2">IDENTIFIER</label>
+                        <input type="text" id="name" className="w-full bg-space-950 border border-zinc-800 rounded p-3 text-zinc-100 focus:outline-none focus:border-neon-cyan focus:shadow-[0_0_10px_rgba(0,243,255,0.2)] transition-all font-mono" placeholder="Your Name" />
+                    </div>
+                    <div>
+                        <label htmlFor="email" className="block text-xs font-mono text-neon-cyan mb-2">RETURN_PATH</label>
+                        <input type="email" id="email" className="w-full bg-space-950 border border-zinc-800 rounded p-3 text-zinc-100 focus:outline-none focus:border-neon-cyan focus:shadow-[0_0_10px_rgba(0,243,255,0.2)] transition-all font-mono" placeholder="your@email.com" />
+                    </div>
+                    <div>
+                        <label htmlFor="message" className="block text-xs font-mono text-neon-cyan mb-2">PAYLOAD</label>
+                        <textarea id="message" rows={5} className="w-full bg-space-950 border border-zinc-800 rounded p-3 text-zinc-100 focus:outline-none focus:border-neon-cyan focus:shadow-[0_0_10px_rgba(0,243,255,0.2)] transition-all font-mono" placeholder="Message content..."></textarea>
+                    </div>
+                    <button type="submit" className="w-full bg-neon-cyan/10 border border-neon-cyan text-neon-cyan font-bold font-mono py-3 rounded hover:bg-neon-cyan hover:text-space-950 transition-all duration-300 uppercase tracking-widest shadow-[0_0_15px_rgba(0,243,255,0.1)] hover:shadow-[0_0_20px_rgba(0,243,255,0.5)]">
+                        INITIATE_UPLINK
+                    </button>
+                </form>
+             </NeonCard>
+        </div>
+
       </div>
-    </div>
+    </>
   );
 }

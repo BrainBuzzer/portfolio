@@ -3,19 +3,16 @@
 @tailwind utilities;
 
 body {
-  background-image: radial-gradient(#d8d8d8 1px, transparent 2px);
-  background-color: #FAFAFA;
-  background-position: 0 0 100px 100px;
-  background-size: 30px 30px;
-  background-attachment: fixed;
+  @apply bg-space-950 text-zinc-100 font-sans selection:bg-neon-cyan selection:text-space-950;
 }
-body.dark-mode {
-  background-image: radial-gradient(#3c4146, 1px, transparent 2px);
-    /* blur the background image */
-    background-color: #252931;
-  background-position: 0 0 100px 100px;
-  background-size: 30px 30px;
-  background-attachment: fixed;
+
+.glass-panel {
+  @apply bg-space-950/70 backdrop-blur-md;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.text-glow {
+  text-shadow: 0 0 10px rgba(0, 243, 255, 0.5);
 }
 
 .profile-pic {
@@ -37,8 +34,8 @@ body.dark-mode {
   .sidebar {
     height: "auto"
   }
+
   .sidebar-div {
     height: "auto"
   }
 }
-

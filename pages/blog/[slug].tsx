@@ -35,10 +35,10 @@ export default function Post({ frontmatter, content }: Props) {
           href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/base16/onedark.min.css"
         ></link>
       </Head>
-      <div className="text-center text-gray-400 dark:text-gray-100">{date}</div>
-      <h1 className="text-center text-4xl font-bold text-gray-900 dark:text-gray-100 pt-4">{title}</h1>
+      <div className="text-center text-zinc-400 font-mono text-sm mb-4">{date}</div>
+      <h1 className="text-center text-4xl font-bold text-zinc-100 pt-4 mb-8 font-mono">{title}</h1>
       <ReactMarkdown
-        className="px-4 sm:px-6 lg:px-8 mb-12 prose prose-stone md:prose-md lg:prose-lg mx-auto mt-8 dark:prose-invert dark:prose-pre:bg-neutral-900 prose-pre:bg-zinc-900"
+        className="px-4 sm:px-6 lg:px-8 mb-12 prose prose-invert md:prose-md lg:prose-lg mx-auto mt-8 prose-pre:bg-zinc-900 text-zinc-300"
         rehypePlugins={[rehypeHighlight]}
       >
         {content}

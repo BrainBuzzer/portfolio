@@ -11,22 +11,17 @@ interface Post {
 
 export default function RecentBlogPosts({ posts }: { posts: Post[] }) {
   return (
-    <div className="flex flex-col mt-8 p-8">
-      <h1 className="text-xl font-bold">Latest Blog Posts</h1>
+    <div className="flex flex-col w-full">
       {posts.map((post, index) => (
-        <div key={index} className="flex flex-row gap-4 mt-8">
-          <div className="flex flex-col">
-            <h2 className="text-sm font-light">{post.frontmatter.date}</h2>
-            <Link href={`/blog/${post.slug}`} className="text-3xl font-bold pt-2">
+        <div key={index} className="flex flex-col mt-8 first:mt-0 p-6 rounded-lg bg-zinc-900 border border-zinc-800 hover:border-zinc-700 transition-colors">
+            <span className="text-xs font-mono text-zinc-500 mb-2">{post.frontmatter.date}</span>
+            <Link href={`/blog/${post.slug}`} className="text-2xl font-bold text-zinc-100 hover:text-white mb-3">
               {post.frontmatter.title}
             </Link>
-            <h2 className="text-gray-900 dark:text-gray-300 text-lg pt-3">{post.frontmatter.excerpt}</h2>
-            <h2 className="text-gray-900 dark:text-gray-300 text-lg pt-3">
-              <Link href={`/blog/${post.slug}`} className="underline">
-                Read more -&gt;
-              </Link>
-            </h2>
-          </div>
+            <p className="text-zinc-400 text-base mb-4 line-clamp-3">{post.frontmatter.excerpt}</p>
+            <Link href={`/blog/${post.slug}`} className="text-sm font-medium text-zinc-300 hover:text-white inline-flex items-center">
+                Read more <span className="ml-1">→</span>
+            </Link>
         </div>
       ))}
     </div>

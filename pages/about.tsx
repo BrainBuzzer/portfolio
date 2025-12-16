@@ -1,6 +1,8 @@
 import Head from "next/head";
+import Image from "next/image";
 import React from "react";
 import NeonCard from "../components/ui/NeonCard";
+import WakaTimeChart from "../components/ui/WakaTimeChart";
 
 export default function About() {
   return (
@@ -18,11 +20,13 @@ export default function About() {
         <div className="grid md:grid-cols-3 gap-8 mb-12">
             <div className="md:col-span-1">
                  <div className="relative group">
-                    <div className="absolute -inset-1 bg-gradient-to-r from-neon-cyan to-neon-purple rounded-lg blur opacity-25 group-hover:opacity-75 transition duration-1000 group-hover:duration-200"></div>
-                    <img
-                        src="https://pbs.twimg.com/profile_images/1581681283733561344/3f40076a_400x400.jpg"
+                    <div className="absolute -inset-1 bg-gradient-to-r from-neon-cyan to-neon-purple rounded-full blur opacity-25 group-hover:opacity-75 transition duration-1000 group-hover:duration-200"></div>
+                    <Image
+                        src="/profile-pic.png"
                         alt="Aditya Giri"
-                        className="relative rounded-lg w-full grayscale hover:grayscale-0 transition-all duration-500"
+                        width={400}
+                        height={400}
+                        className="relative rounded-full w-full grayscale hover:grayscale-0 transition-all duration-500"
                     />
                  </div>
             </div>
@@ -71,12 +75,7 @@ export default function About() {
                 <span className="text-neon-green mr-2">&gt;</span> METRICS.ACTIVITY
             </h2>
             <NeonCard className="p-0 overflow-hidden bg-white/5">
-                <figure className="w-full">
-                    <embed
-                    className="w-full h-auto aspect-[4/1]"
-                    src="https://wakatime.com/share/@adityagiri/534d31d4-073f-4217-a16f-124b8b6fc86b.svg"
-                    ></embed>
-                </figure>
+                <WakaTimeChart />
             </NeonCard>
         </div>
       </div>

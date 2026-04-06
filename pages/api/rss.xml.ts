@@ -67,11 +67,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       feed.item({
         title: title,
         description: excerpt,
-        url: `${siteUrl}/blog/${post.slug}`,
+        url: `${siteUrl}/articles/${post.slug}`,
         date: date,
         author: author || "Aditya Giri",
         categories: category ? [category] : undefined,
-        guid: `${siteUrl}/blog/${post.slug}`,
+        guid: `${siteUrl}/articles/${post.slug}`,
       });
     });
 

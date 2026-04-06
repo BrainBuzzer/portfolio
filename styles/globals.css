@@ -2,40 +2,35 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  min-height: 100%;
+}
+
 body {
-  @apply bg-space-950 text-zinc-100 font-sans selection:bg-neon-cyan selection:text-space-950;
+  @apply min-h-screen bg-zinc-100 font-sans text-zinc-900 antialiased dark:bg-zinc-900 dark:text-zinc-100;
 }
 
-.glass-panel {
-  @apply bg-space-950/70 backdrop-blur-md;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+::selection {
+  background: #ccfbf1;
+  color: #134e4a;
 }
 
-.text-glow {
-  text-shadow: 0 0 10px rgba(0, 243, 255, 0.5);
+a {
+  @apply no-underline;
 }
 
-.profile-pic {
-  border-radius: 50%;
-  width: 80%;
-  margin: 0 auto;
+.prose {
+  @apply text-zinc-700 dark:text-zinc-300;
 }
 
-.sidebar {
-  height: 91vh;
+.prose :where(a):not(:where([class~="not-prose"] *)) {
+  @apply text-teal-700 decoration-teal-200 transition hover:text-teal-600 dark:text-teal-400 dark:decoration-teal-900 dark:hover:text-teal-300;
 }
 
-
-.sidebar-div {
-  height: 90vh;
+.prose :where(h1, h2, h3, h4):not(:where([class~="not-prose"] *)) {
+  @apply text-zinc-900 dark:text-zinc-100;
 }
 
-@media screen and (max-width: 768px) {
-  .sidebar {
-    height: "auto"
-  }
-
-  .sidebar-div {
-    height: "auto"
-  }
+.prose :where(code):not(:where([class~="not-prose"] *)) {
+  @apply rounded bg-zinc-100 px-1.5 py-0.5 text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200;
 }

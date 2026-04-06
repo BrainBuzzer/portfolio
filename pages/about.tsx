@@ -1,84 +1,124 @@
 import Head from "next/head";
 import Image from "next/image";
-import React from "react";
-import NeonCard from "../components/ui/NeonCard";
-import WakaTimeChart from "../components/ui/WakaTimeChart";
+import Link from "next/link";
+import { Container } from "../components/Container";
+import {
+  GitHubIcon,
+  LinkedInIcon,
+  XIcon,
+} from "../components/SocialIcons";
+import {
+  aboutHeadline,
+  aboutParagraphs,
+  socialLinks,
+} from "../utils/siteData";
+import { cn } from "../utils/cn";
+
+function MailIcon(props: React.ComponentPropsWithoutRef<"svg">) {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true" {...props}>
+      <path
+        fillRule="evenodd"
+        d="M6 5a3 3 0 0 0-3 3v8a3 3 0 0 0 3 3h12a3 3 0 0 0 3-3V8a3 3 0 0 0-3-3H6Zm.245 2.187a.75.75 0 0 0-.99 1.126l6.25 5.5a.75.75 0 0 0 .99 0l6.25-5.5a.75.75 0 0 0-.99-1.126L12 12.251 6.245 7.187Z"
+      />
+    </svg>
+  );
+}
+
+function SocialLink({
+  className,
+  href,
+  icon: Icon,
+  children,
+}: {
+  className?: string;
+  href: string;
+  icon: React.ComponentType<{ className?: string }>;
+  children: React.ReactNode;
+}) {
+  const external = href.startsWith("http");
+
+  return (
+    <li className={cn("flex", className)}>
+      <Link
+        href={href}
+        className="group flex text-sm font-medium text-zinc-800 transition hover:text-teal-600 dark:text-zinc-200 dark:hover:text-teal-400"
+        target={external ? "_blank" : undefined}
+        rel={external ? "noreferrer" : undefined}
+      >
+        <Icon className="h-6 w-6 flex-none fill-zinc-500 transition group-hover:fill-teal-600 dark:fill-zinc-400 dark:group-hover:fill-teal-400" />
+        <span className="ml-4">{children}</span>
+      </Link>
+    </li>
+  );
+}
 
 export default function About() {
   return (
     <>
       <Head>
-        <title>Mission Profile // Aditya Giri</title>
-        <meta name="description" content="About Aditya Giri - Engineer." />
+        <title>About - Aditya Giri</title>
+        <meta name="description" content="About Aditya Giri." />
       </Head>
-      <div className="max-w-4xl mx-auto text-zinc-300">
-        <h1 className="text-4xl font-bold text-white mb-2 font-mono tracking-tighter">
-          MISSION<span className="text-neon-cyan">.PROFILE</span>
-        </h1>
-        <div className="h-1 w-20 bg-neon-cyan mb-10 shadow-[0_0_10px_#00f3ff]"></div>
 
-        <div className="grid md:grid-cols-3 gap-8 mb-12">
-            <div className="md:col-span-1">
-                 <div className="relative group">
-                    <div className="absolute -inset-1 bg-gradient-to-r from-neon-cyan to-neon-purple rounded-full blur opacity-25 group-hover:opacity-75 transition duration-1000 group-hover:duration-200"></div>
-                    <Image
-                        src="/profile-pic.png"
-                        alt="Aditya Giri"
-                        width={400}
-                        height={400}
-                        className="relative rounded-full w-full grayscale hover:grayscale-0 transition-all duration-500"
-                    />
-                 </div>
+      <Container className="mt-16 sm:mt-24">
+        <div className="grid grid-cols-1 gap-y-16 lg:grid-cols-2 lg:grid-rows-[auto_1fr] lg:gap-y-12">
+          <div className="lg:pl-20">
+            <div className="max-w-xs px-2.5 lg:max-w-none">
+              <Image
+                src="/profile-pic.png"
+                alt="Aditya Giri"
+                width={800}
+                height={800}
+                sizes="(min-width: 1024px) 32rem, 20rem"
+                className="aspect-square rotate-3 rounded-2xl bg-zinc-100 object-cover dark:bg-zinc-800"
+                priority
+              />
             </div>
-            <div className="md:col-span-2">
-                <NeonCard className="h-full">
-                    <p className="font-mono text-neon-cyan mb-4 text-xs">/IDENTITY/BIO</p>
-                    <p className="mb-4">
-                        I am a software engineer with a deep passion for building scalable systems and intuitive interfaces. My journey began with a curiosity for how things work, leading me to explore everything from full-stack web development to low-level systems programming.
-                    </p>
-                    <p>
-                        Currently, I engineer backend solutions at <strong className="text-white">Classcard</strong>, ensuring reliability and performance for users worldwide.
-                    </p>
-                </NeonCard>
+          </div>
+          <div className="lg:order-first lg:row-span-2">
+            <h1 className="text-4xl font-bold tracking-tight text-zinc-900 sm:text-5xl dark:text-zinc-100">
+              {aboutHeadline}
+            </h1>
+            <div className="mt-6 space-y-7 text-base leading-7 text-zinc-600 dark:text-zinc-400">
+              {aboutParagraphs.map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
             </div>
-        </div>
+          </div>
+          <div className="lg:pl-20">
+            <ul role="list">
+              {socialLinks.map((link, index) => {
+                const icon =
+                  link.platform === "github"
+                    ? GitHubIcon
+                    : link.platform === "linkedin"
+                      ? LinkedInIcon
+                      : link.platform === "x"
+                        ? XIcon
+                        : MailIcon;
 
-        <h2 className="text-2xl font-bold text-white mb-6 font-mono flex items-center">
-            <span className="text-neon-purple mr-2">&gt;</span> LOGS.EXPERIENCE
-        </h2>
-
-        <div className="space-y-6 md:border-l border-zinc-800 md:pl-8 relative">
-            
-            {[
-                { title: "Co-Founder", company: "Terrafloww", date: "2025 - Present", desc: "Building Terrafloww." },
-                { title: "Technical Consultant", company: "Edgescale", date: "Jun 2023 - Present", desc: "Built scalable systems handling 100,000+ requests per minute." },
-                { title: "Software Engineer", company: "Classcard", date: "Dec 2022 - Jun 2023", desc: "Building backend systems with Laravel." },
-                { title: "Founder", company: "Hyperlog", date: "March 2018 - 2022", desc: "Built a developer intelligence platform." },
-                { title: "Consultant", company: "Kawa Space", date: "Dec 2020 - Dec 2021", desc: "Frontend and Backend engineering for space data." }
-            ].map((job, i) => (
-                <div key={i} className="relative">
-                    <div className="hidden md:block absolute -left-[37px] top-6 w-4 h-4 rounded-full bg-space-950 border-2 border-neon-cyan shadow-[0_0_10px_#00f3ff]"></div>
-                    <NeonCard glowColor="cyan" className="relative">
-                        <div className="flex flex-col md:flex-row md:justify-between md:items-center mb-2">
-                             <h3 className="text-xl font-bold text-white">{job.title}</h3>
-                             <span className="font-mono text-xs text-neon-cyan bg-neon-cyan/10 px-2 py-1 rounded border border-neon-cyan/20">{job.date}</span>
-                        </div>
-                        <p className="text-zinc-400 font-mono text-sm mb-2 text-neon-purple">@{job.company}</p>
-                        <p className="text-sm">{job.desc}</p>
-                    </NeonCard>
-                </div>
-            ))}
+                return (
+                  <SocialLink
+                    key={link.href}
+                    href={link.href}
+                    icon={icon}
+                    className={
+                      index === socialLinks.length - 1
+                        ? "mt-8 border-t border-zinc-200 pt-8 dark:border-zinc-700/40"
+                        : index > 0
+                          ? "mt-4"
+                          : undefined
+                    }
+                  >
+                    {link.label}
+                  </SocialLink>
+                );
+              })}
+            </ul>
+          </div>
         </div>
-        
-        <div className="mt-16">
-            <h2 className="text-2xl font-bold text-white mb-6 font-mono flex items-center">
-                <span className="text-neon-green mr-2">&gt;</span> METRICS.ACTIVITY
-            </h2>
-            <NeonCard className="p-0 overflow-hidden bg-white/5">
-                <WakaTimeChart />
-            </NeonCard>
-        </div>
-      </div>
+      </Container>
     </>
   );
 }

@@ -1,65 +1,75 @@
-import { Switch } from "@headlessui/react";
-import useDarkMode from "../utils/useDarkMode";
+import { useEffect, useState } from "react";
 
-function classNames(...classes: string[]) {
-  return classes.filter(Boolean).join(" ");
+function SunIcon(props: React.ComponentPropsWithoutRef<"svg">) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      {...props}
+    >
+      <path d="M8 12.25A4.25 4.25 0 0 1 12.25 8v0a4.25 4.25 0 0 1 4.25 4.25v0a4.25 4.25 0 0 1-4.25 4.25v0A4.25 4.25 0 0 1 8 12.25v0Z" />
+      <path
+        d="M12.25 3v1.5M21.5 12.25H20M18.791 18.791l-1.06-1.06M18.791 5.709l-1.06 1.06M12.25 20v1.5M4.5 12.25H3M6.77 6.77 5.709 5.709M6.77 17.73l-1.061 1.061"
+        fill="none"
+      />
+    </svg>
+  );
+}
+
+function MoonIcon(props: React.ComponentPropsWithoutRef<"svg">) {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true" {...props}>
+      <path
+        d="M17.25 16.22a6.937 6.937 0 0 1-9.47-9.47 7.451 7.451 0 1 0 9.47 9.47ZM12.75 7C17 7 17 2.75 17 2.75S17 7 21.25 7C17 7 17 11.25 17 11.25S17 7 12.75 7Z"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+function getPreferredTheme() {
+  if (typeof window === "undefined") {
+    return false;
+  }
+
+  const stored = window.localStorage.getItem("theme");
+  if (stored === "dark") return true;
+  if (stored === "light") return false;
+  return window.matchMedia("(prefers-color-scheme: dark)").matches;
 }
 
 export default function ThemeSwitcher() {
-  const { isDarkMode, toggle } = useDarkMode();
+  const [isDark, setIsDark] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    const nextIsDark = getPreferredTheme();
+    setIsDark(nextIsDark);
+    setMounted(true);
+    document.documentElement.classList.toggle("dark", nextIsDark);
+  }, []);
+
+  function toggleTheme() {
+    const nextIsDark = !isDark;
+    setIsDark(nextIsDark);
+    document.documentElement.classList.toggle("dark", nextIsDark);
+    window.localStorage.setItem("theme", nextIsDark ? "dark" : "light");
+  }
 
   return (
-    <Switch
-      checked={isDarkMode ? true : false}
-      onChange={() => toggle()}
-      className={classNames(
-        isDarkMode ? "bg-gray-600" : "bg-gray-200",
-        "relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none",
-      )}
+    <button
+      type="button"
+      aria-label={mounted ? `Switch to ${isDark ? "light" : "dark"} theme` : "Toggle theme"}
+      className="group rounded-full bg-white/90 px-3 py-2 shadow-lg ring-1 ring-zinc-900/5 backdrop-blur transition dark:bg-zinc-800/90 dark:ring-white/10 dark:hover:ring-white/20"
+      onClick={toggleTheme}
     >
-      <span
-        className={classNames(
-          isDarkMode ? "translate-x-5" : "translate-x-0",
-          "pointer-events-none relative inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out",
-        )}
-      >
-        <span
-          className={classNames(
-            isDarkMode ? "opacity-0 ease-out duration-100" : "opacity-100 ease-in duration-200",
-            "absolute inset-0 flex h-full w-full items-center justify-center transition-opacity",
-          )}
-          aria-hidden="true"
-        >
-          <svg
-            className="h-3 w-3 text-gray-600"
-            fill="currentColor"
-            viewBox="0 0 20 20"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              fillRule="evenodd"
-              d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
-              clipRule="evenodd"
-            />
-          </svg>
-        </span>
-        <span
-          className={classNames(
-            isDarkMode ? "opacity-100 ease-in duration-200" : "opacity-0 ease-out duration-100",
-            "absolute inset-0 flex h-full w-full items-center justify-center transition-opacity",
-          )}
-          aria-hidden="true"
-        >
-          <svg
-            className="h-3 w-3 text-gray-600"
-            fill="currentColor"
-            viewBox="0 0 20 20"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
-          </svg>
-        </span>
-      </span>
-    </Switch>
+      <SunIcon className="h-6 w-6 fill-zinc-100 stroke-zinc-500 transition group-hover:fill-zinc-200 group-hover:stroke-zinc-700 dark:hidden" />
+      <MoonIcon className="hidden h-6 w-6 fill-zinc-700 stroke-zinc-500 transition dark:block dark:group-hover:stroke-zinc-400" />
+    </button>
   );
 }

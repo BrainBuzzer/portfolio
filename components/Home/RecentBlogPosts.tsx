@@ -1,3 +1,4 @@
+import { Card } from "../Card";
 import Link from "next/link";
 
 interface Post {
@@ -9,20 +10,36 @@ interface Post {
   };
 }
 
-export default function RecentBlogPosts({ posts }: { posts: Post[] }) {
+interface RecentBlogPostsProps {
+  posts: Post[];
+  basePath?: string;
+}
+
+function formatDate(date: string) {
+  return new Date(`${date}T00:00:00`).toLocaleDateString("en-US", {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+  });
+}
+
+export default function RecentBlogPosts({
+  posts,
+  basePath = "/articles",
+}: RecentBlogPostsProps) {
   return (
-    <div className="flex flex-col w-full">
-      {posts.map((post, index) => (
-        <div key={index} className="flex flex-col mt-8 first:mt-0 p-6 rounded-lg bg-zinc-900 border border-zinc-800 hover:border-zinc-700 transition-colors">
-            <span className="text-xs font-mono text-zinc-500 mb-2">{post.frontmatter.date}</span>
-            <Link href={`/blog/${post.slug}`} className="text-2xl font-bold text-zinc-100 hover:text-white mb-3">
-              {post.frontmatter.title}
-            </Link>
-            <p className="text-zinc-400 text-base mb-4 line-clamp-3">{post.frontmatter.excerpt}</p>
-            <Link href={`/blog/${post.slug}`} className="text-sm font-medium text-zinc-300 hover:text-white inline-flex items-center">
-                Read more <span className="ml-1">→</span>
-            </Link>
-        </div>
+    <div className="flex flex-col gap-10">
+      {posts.map((post) => (
+        <Card as="article" key={post.slug}>
+          <Card.Title href={`${basePath}/${post.slug}`}>
+            {post.frontmatter.title}
+          </Card.Title>
+          <Card.Eyebrow as="time" dateTime={post.frontmatter.date} decorate>
+            {formatDate(post.frontmatter.date)}
+          </Card.Eyebrow>
+          <Card.Description>{post.frontmatter.excerpt}</Card.Description>
+          <Card.Cta>Read article</Card.Cta>
+        </Card>
       ))}
     </div>
   );

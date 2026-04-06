@@ -1,11 +1,11 @@
-export default function Contact() {
+export default function Speaking() {
   return null;
 }
 
 export function getServerSideProps() {
   return {
     redirect: {
-      destination: "/about",
+      destination: "/projects",
       permanent: false,
     },
   };

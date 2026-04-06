@@ -30,6 +30,41 @@ module.exports = {
         mono: ["var(--font-jetbrains-mono)", "monospace"],
       },
       colors: {
+        cyan: {
+          100: "#cffafe",
+          200: "#a5f3fc",
+          300: "#67e8f9",
+          700: "#0e7490",
+        },
+        indigo: {
+          100: "#e0e7ff",
+          200: "#c7d2fe",
+          300: "#a5b4fc",
+          700: "#4338ca",
+        },
+        emerald: {
+          100: "#d1fae5",
+          200: "#a7f3d0",
+          300: "#6ee7b7",
+          700: "#047857",
+        },
+        amber: {
+          100: "#fef3c7",
+          200: "#fde68a",
+          300: "#fcd34d",
+          700: "#b45309",
+        },
+        teal: {
+          50: "#f0fdfa",
+          100: "#ccfbf1",
+          200: "#99f6e4",
+          300: "#5eead4",
+          400: "#2dd4bf",
+          500: "#14b8a6",
+          600: "#0d9488",
+          700: "#0f766e",
+          900: "#134e4a",
+        },
         space: {
           950: '#030303', // Deepest black
           900: '#0a0a0a',

@@ -4,12 +4,7 @@ import { cn } from "../utils/cn";
 function ChevronRightIcon(props: React.ComponentPropsWithoutRef<"svg">) {
   return (
     <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" {...props}>
-      <path
-        d="M6.75 5.75 9.25 8l-2.5 2.25"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
+      <path d="M6.75 5.75 9.25 8l-2.5 2.25" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
 }
@@ -26,19 +21,13 @@ export function Card<T extends React.ElementType = "div">({
   const Component = as ?? "div";
 
   return (
-    <Component
-      className={cn("group relative flex flex-col items-start", className)}
-      {...props}
-    >
+    <Component className={cn("group relative flex flex-col items-start", className)} {...props}>
       {children}
     </Component>
   );
 }
 
-Card.Link = function CardLink({
-  children,
-  ...props
-}: React.ComponentPropsWithoutRef<typeof Link>) {
+Card.Link = function CardLink({ children, ...props }: React.ComponentPropsWithoutRef<typeof Link>) {
   return (
     <>
       <div className="absolute -inset-x-4 -inset-y-6 z-0 scale-95 rounded-2xl bg-zinc-50 opacity-0 transition duration-200 group-hover:scale-100 group-hover:opacity-100 dark:bg-zinc-800/50" />
@@ -63,7 +52,7 @@ Card.Title = function CardTitle<T extends React.ElementType = "h2">({
 
   return (
     <Component
-      className="text-base font-semibold tracking-tight text-zinc-900 dark:text-zinc-100"
+      className="font-display text-base font-medium tracking-tight text-zinc-900 dark:text-zinc-100"
       {...props}
     >
       {href ? <Card.Link href={href}>{children}</Card.Link> : children}
@@ -71,16 +60,8 @@ Card.Title = function CardTitle<T extends React.ElementType = "h2">({
   );
 };
 
-Card.Description = function CardDescription({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  return (
-    <p className="relative z-10 mt-2 text-sm text-zinc-600 dark:text-zinc-400">
-      {children}
-    </p>
-  );
+Card.Description = function CardDescription({ children }: { children: React.ReactNode }) {
+  return <p className="relative z-10 mt-2 text-sm text-zinc-600 dark:text-zinc-400">{children}</p>;
 };
 
 Card.Cta = function CardCta({ children }: { children: React.ReactNode }) {
@@ -110,7 +91,7 @@ Card.Eyebrow = function CardEyebrow<T extends React.ElementType = "p">({
   return (
     <Component
       className={cn(
-        "relative z-10 order-first mb-3 flex items-center text-sm text-zinc-400 dark:text-zinc-500",
+        "relative z-10 order-first mb-3 flex items-center font-mono text-[0.72rem] tracking-[0.12em] text-zinc-400 tabular-nums dark:text-zinc-500",
         decorate && "pl-3.5",
         className,
       )}

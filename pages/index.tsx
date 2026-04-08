@@ -4,11 +4,7 @@ import Link from "next/link";
 import RecentBlogPosts from "../components/Home/RecentBlogPosts";
 import { Card } from "../components/Card";
 import { Container } from "../components/Container";
-import {
-  GitHubIcon,
-  LinkedInIcon,
-  XIcon,
-} from "../components/SocialIcons";
+import { GitHubIcon, LinkedInIcon, XIcon } from "../components/SocialIcons";
 import { getAllPosts, type PostSummary } from "../utils/posts";
 import { experience, focusItems, homeIntro, socialLinks } from "../utils/siteData";
 
@@ -52,7 +48,9 @@ function SocialLink({
 function WorkSummary() {
   return (
     <div className="rounded-2xl border border-zinc-200 p-6 dark:border-zinc-700/40">
-      <h2 className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">Work</h2>
+      <h2 className="font-pixel text-[0.72rem] uppercase leading-none tracking-[0.04em] text-zinc-900 sm:text-[0.78rem] dark:text-zinc-100">
+        Work
+      </h2>
       <ol className="mt-6 space-y-4">
         {experience.map((role) => (
           <li key={`${role.company}-${role.title}`} className="flex gap-4">
@@ -66,11 +64,13 @@ function WorkSummary() {
               />
             </div>
             <dl className="flex flex-auto flex-wrap gap-x-2">
-              <dd className="w-full flex-none text-sm font-medium text-zinc-900 dark:text-zinc-100">
-                {role.company}
+              <dd className="w-full flex-none text-sm font-medium text-zinc-900 dark:text-zinc-100">{role.company}</dd>
+              <dd className="font-mono text-[0.72rem] tracking-[0.12em] text-zinc-500 dark:text-zinc-400">
+                {role.title}
               </dd>
-              <dd className="text-xs text-zinc-500 dark:text-zinc-400">{role.title}</dd>
-              <dd className="ml-auto text-xs text-zinc-400 dark:text-zinc-500">{role.date}</dd>
+              <dd className="ml-auto font-mono text-[0.72rem] tracking-[0.12em] text-zinc-400 dark:text-zinc-500">
+                {role.date}
+              </dd>
             </dl>
           </li>
         ))}
@@ -88,14 +88,14 @@ function WorkSummary() {
 function NowSummary() {
   return (
     <div className="rounded-2xl border border-zinc-200 p-6 dark:border-zinc-700/40">
-      <h2 className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">Now</h2>
+      <h2 className="font-pixel text-[0.72rem] uppercase leading-none tracking-[0.04em] text-zinc-900 sm:text-[0.78rem] dark:text-zinc-100">
+        Now
+      </h2>
       <div className="mt-6 space-y-5">
         {focusItems.map((item) => (
           <div key={item.title}>
             <h3 className="text-sm font-medium text-zinc-900 dark:text-zinc-100">{item.title}</h3>
-            <p className="mt-2 text-sm leading-6 text-zinc-600 dark:text-zinc-400">
-              {item.description}
-            </p>
+            <p className="mt-2 text-sm leading-6 text-zinc-600 dark:text-zinc-400">{item.description}</p>
           </div>
         ))}
       </div>
@@ -116,7 +116,7 @@ export default function Home({ posts }: HomeProps) {
 
       <Container className="mt-16 sm:mt-24">
         <div className="max-w-2xl">
-          <h1 className="text-4xl font-bold tracking-tight text-zinc-900 sm:text-5xl dark:text-zinc-100">
+          <h1 className="font-display text-4xl font-medium tracking-tight text-zinc-900 sm:text-5xl dark:text-zinc-100">
             Software engineer, builder, and systems-minded operator.
           </h1>
           <p className="mt-6 text-base leading-7 text-zinc-600 dark:text-zinc-400">{homeIntro}</p>
@@ -126,10 +126,10 @@ export default function Home({ posts }: HomeProps) {
                 link.platform === "github"
                   ? GitHubIcon
                   : link.platform === "linkedin"
-                    ? LinkedInIcon
-                    : link.platform === "x"
-                      ? XIcon
-                      : MailIcon;
+                  ? LinkedInIcon
+                  : link.platform === "x"
+                  ? XIcon
+                  : MailIcon;
 
               return (
                 <SocialLink key={link.href} href={link.href} icon={icon}>
@@ -146,10 +146,11 @@ export default function Home({ posts }: HomeProps) {
           <div className="flex flex-col gap-16">
             <section>
               <div className="mb-8">
-                <h2 className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">Writing</h2>
+                <h2 className="font-pixel text-[0.72rem] uppercase leading-none tracking-[0.04em] text-zinc-900 sm:text-[0.78rem] dark:text-zinc-100">
+                  Writing
+                </h2>
                 <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
-                  Notes on engineering, systems, and the things I&apos;m learning
-                  along the way.
+                  Notes on engineering, systems, and the things I&apos;m learning along the way.
                 </p>
               </div>
               <RecentBlogPosts posts={posts.slice(0, 4)} basePath="/articles" />
@@ -158,8 +159,7 @@ export default function Home({ posts }: HomeProps) {
             <Card>
               <Card.Title href="/articles">Browse all articles</Card.Title>
               <Card.Description>
-                The existing blog archive is preserved and now sits under the new
-                Spotlight-style articles section.
+                The existing blog archive is preserved and now sits under the new Spotlight-style articles section.
               </Card.Description>
               <Card.Cta>See all writing</Card.Cta>
             </Card>

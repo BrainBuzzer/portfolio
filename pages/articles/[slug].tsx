@@ -14,10 +14,7 @@ function formatDate(date: string) {
   });
 }
 
-export default function ArticlePage({
-  frontmatter,
-  content,
-}: ArticlePageProps) {
+export default function ArticlePage({ frontmatter, content }: ArticlePageProps) {
   return (
     <>
       <Head>
@@ -32,15 +29,13 @@ export default function ArticlePage({
       <Container className="mt-16 sm:mt-24">
         <article className="mx-auto max-w-3xl">
           <header className="max-w-2xl">
-            <time className="text-sm text-zinc-500 dark:text-zinc-400">
+            <time className="font-mono text-xs tracking-[0.12em] text-zinc-500 dark:text-zinc-400">
               {formatDate(frontmatter.date)}
             </time>
-            <h1 className="mt-4 text-4xl font-bold tracking-tight text-zinc-900 sm:text-5xl dark:text-zinc-100">
+            <h1 className="mt-4 font-display text-4xl font-medium tracking-tight text-zinc-900 sm:text-5xl dark:text-zinc-100">
               {frontmatter.title}
             </h1>
-            <p className="mt-6 text-base leading-7 text-zinc-600 dark:text-zinc-400">
-              {frontmatter.excerpt}
-            </p>
+            <p className="mt-6 text-base leading-7 text-zinc-600 dark:text-zinc-400">{frontmatter.excerpt}</p>
           </header>
 
           <ReactMarkdown
@@ -64,11 +59,7 @@ export function getStaticPaths() {
   };
 }
 
-export function getStaticProps({
-  params,
-}: {
-  params: { slug: string };
-}) {
+export function getStaticProps({ params }: { params: { slug: string } }) {
   return {
     props: getPostBySlug(params.slug),
   };

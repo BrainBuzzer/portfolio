@@ -2,16 +2,8 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import { Container } from "../components/Container";
-import {
-  GitHubIcon,
-  LinkedInIcon,
-  XIcon,
-} from "../components/SocialIcons";
-import {
-  aboutHeadline,
-  aboutParagraphs,
-  socialLinks,
-} from "../utils/siteData";
+import { GitHubIcon, LinkedInIcon, XIcon } from "../components/SocialIcons";
+import { aboutHeadline, aboutParagraphs, socialLinks } from "../utils/siteData";
 import { cn } from "../utils/cn";
 
 function MailIcon(props: React.ComponentPropsWithoutRef<"svg">) {
@@ -77,7 +69,7 @@ export default function About() {
             </div>
           </div>
           <div className="lg:order-first lg:row-span-2">
-            <h1 className="text-4xl font-bold tracking-tight text-zinc-900 sm:text-5xl dark:text-zinc-100">
+            <h1 className="font-display text-4xl font-medium tracking-tight text-zinc-900 sm:text-5xl dark:text-zinc-100">
               {aboutHeadline}
             </h1>
             <div className="mt-6 space-y-7 text-base leading-7 text-zinc-600 dark:text-zinc-400">
@@ -93,10 +85,10 @@ export default function About() {
                   link.platform === "github"
                     ? GitHubIcon
                     : link.platform === "linkedin"
-                      ? LinkedInIcon
-                      : link.platform === "x"
-                        ? XIcon
-                        : MailIcon;
+                    ? LinkedInIcon
+                    : link.platform === "x"
+                    ? XIcon
+                    : MailIcon;
 
                 return (
                   <SocialLink
@@ -107,8 +99,8 @@ export default function About() {
                       index === socialLinks.length - 1
                         ? "mt-8 border-t border-zinc-200 pt-8 dark:border-zinc-700/40"
                         : index > 0
-                          ? "mt-4"
-                          : undefined
+                        ? "mt-4"
+                        : undefined
                     }
                   >
                     {link.label}

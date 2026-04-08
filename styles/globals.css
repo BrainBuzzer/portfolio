@@ -8,6 +8,7 @@ html {
 
 body {
   @apply min-h-screen bg-zinc-100 font-sans text-zinc-900 antialiased dark:bg-zinc-900 dark:text-zinc-100;
+  font-feature-settings: "ss01" 1;
 }
 
 ::selection {
@@ -28,9 +29,9 @@ a {
 }
 
 .prose :where(h1, h2, h3, h4):not(:where([class~="not-prose"] *)) {
-  @apply text-zinc-900 dark:text-zinc-100;
+  @apply font-display font-medium tracking-tight text-zinc-900 dark:text-zinc-100;
 }
 
 .prose :where(code):not(:where([class~="not-prose"] *)) {
-  @apply rounded bg-zinc-100 px-1.5 py-0.5 text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200;
+  @apply rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200;
 }

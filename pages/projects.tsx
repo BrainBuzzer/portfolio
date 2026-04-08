@@ -1,26 +1,19 @@
 import Head from "next/head";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPhp } from "@fortawesome/free-brands-svg-icons";
-import {
-  faBullhorn,
-  faScaleBalanced,
-  faSatelliteDish,
-} from "@fortawesome/free-solid-svg-icons";
+import { faBullhorn, faScaleBalanced, faSatelliteDish } from "@fortawesome/free-solid-svg-icons";
 import { Card } from "../components/Card";
 import SimpleLayout from "../components/SimpleLayout";
 import { projectStubs, projectsIntro } from "../utils/siteData";
 
-function ProjectIcon({
-  kind,
-}: {
-  kind: "mqtt" | "php" | "campaign" | "policy";
-}) {
-  const wrapperClass =
-    "relative z-10 flex h-12 w-12 items-center justify-center rounded-2xl ring-1 shadow-sm";
+function ProjectIcon({ kind }: { kind: "mqtt" | "php" | "campaign" | "policy" }) {
+  const wrapperClass = "relative z-10 flex h-12 w-12 items-center justify-center rounded-2xl ring-1 shadow-sm";
 
   if (kind === "mqtt") {
     return (
-      <div className={`${wrapperClass} bg-cyan-100 text-cyan-700 ring-cyan-200 dark:bg-cyan-500/15 dark:text-cyan-300 dark:ring-cyan-500/25`}>
+      <div
+        className={`${wrapperClass} bg-cyan-100 text-cyan-700 ring-cyan-200 dark:bg-cyan-500/15 dark:text-cyan-300 dark:ring-cyan-500/25`}
+      >
         <FontAwesomeIcon icon={faSatelliteDish as any} className="h-6 w-6" />
       </div>
     );
@@ -28,7 +21,9 @@ function ProjectIcon({
 
   if (kind === "php") {
     return (
-      <div className={`${wrapperClass} bg-indigo-100 text-indigo-700 ring-indigo-200 dark:bg-indigo-500/15 dark:text-indigo-300 dark:ring-indigo-500/25`}>
+      <div
+        className={`${wrapperClass} bg-indigo-100 text-indigo-700 ring-indigo-200 dark:bg-indigo-500/15 dark:text-indigo-300 dark:ring-indigo-500/25`}
+      >
         <FontAwesomeIcon icon={faPhp as any} className="h-7 w-7" />
       </div>
     );
@@ -36,14 +31,18 @@ function ProjectIcon({
 
   if (kind === "campaign") {
     return (
-      <div className={`${wrapperClass} bg-emerald-100 text-emerald-700 ring-emerald-200 dark:bg-emerald-500/15 dark:text-emerald-300 dark:ring-emerald-500/25`}>
+      <div
+        className={`${wrapperClass} bg-emerald-100 text-emerald-700 ring-emerald-200 dark:bg-emerald-500/15 dark:text-emerald-300 dark:ring-emerald-500/25`}
+      >
         <FontAwesomeIcon icon={faBullhorn as any} className="h-6 w-6" />
       </div>
     );
   }
 
   return (
-    <div className={`${wrapperClass} bg-amber-100 text-amber-700 ring-amber-200 dark:bg-amber-500/15 dark:text-amber-300 dark:ring-amber-500/25`}>
+    <div
+      className={`${wrapperClass} bg-amber-100 text-amber-700 ring-amber-200 dark:bg-amber-500/15 dark:text-amber-300 dark:ring-amber-500/25`}
+    >
       <FontAwesomeIcon icon={faScaleBalanced as any} className="h-6 w-6" />
     </div>
   );
@@ -68,25 +67,19 @@ export default function Projects() {
         <meta name="description" content="Projects by Aditya Giri." />
       </Head>
 
-      <SimpleLayout
-        title="Projects, tools, and public work I’ve put out into the world."
-        intro={projectsIntro}
-      >
-        <ul
-          role="list"
-          className="grid grid-cols-1 gap-x-12 gap-y-16 sm:grid-cols-2 lg:grid-cols-3"
-        >
+      <SimpleLayout title="Projects, tools, and public work I’ve put out into the world." intro={projectsIntro}>
+        <ul role="list" className="grid grid-cols-1 gap-x-12 gap-y-16 sm:grid-cols-2 lg:grid-cols-3">
           {projectStubs.map((project) => (
             <Card as="li" key={project.name}>
               <ProjectIcon kind={project.icon} />
               <Card.Eyebrow decorate className="mt-6">
                 {project.tag}
               </Card.Eyebrow>
-              <h2 className="mt-6 text-base font-semibold text-zinc-900 dark:text-zinc-100">
+              <h2 className="mt-6 font-display text-base font-medium tracking-tight text-zinc-900 dark:text-zinc-100">
                 <Card.Link href={project.href}>{project.name}</Card.Link>
               </h2>
               <Card.Description>{project.description}</Card.Description>
-              <p className="relative z-10 mt-6 flex text-sm font-medium text-zinc-400 transition group-hover:text-teal-600 dark:text-zinc-300 dark:group-hover:text-teal-400">
+              <p className="relative z-10 mt-6 flex font-mono text-[0.72rem] tracking-[0.12em] text-zinc-400 transition group-hover:text-teal-600 dark:text-zinc-300 dark:group-hover:text-teal-400">
                 <LinkIcon className="h-6 w-6 flex-none" />
                 <span className="ml-2">{project.label}</span>
               </p>

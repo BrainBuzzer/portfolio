@@ -6,16 +6,22 @@ interface Data {
   message: string;
 }
 
-export default function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
-  if (req.method === "POST") {
-    if (req.headers.authorization === process.env.ONLINE_PORTFOLIO_API_KEY) {
-      const redis = Redis.fromEnv();
-      redis.set("lastOnlineTime", req.body.timestamp).then(() => {
-        console.log("Data added to Redis");
-      });
-      res.status(200).json({ message: "success" });
-    } else {
-      res.status(401).json({ message: "unauthorized" });
-    }
+export default async function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
+  if (req.method !== "POST") {
+    return res.status(405).json({ message: "Method not allowed" });
+  }
+
+  if (req.headers.authorization !== process.env.ONLINE_PORTFOLIO_API_KEY) {
+    return res.status(401).json({ message: "unauthorized" });
+  }
+
+  try {
+    const redis = Redis.fromEnv();
+    await redis.set("lastOnlineTime", req.body.timestamp);
+
+    return res.status(200).json({ message: "success" });
+  } catch (error) {
+    console.error("Online check Redis write failed", error);
+    return res.status(500).json({ message: "Internal server error" });
   }
 }

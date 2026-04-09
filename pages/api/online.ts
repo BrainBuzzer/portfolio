@@ -6,8 +6,22 @@ interface Data {
   lastOnlineTime: unknown;
 }
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
-  const redis = Redis.fromEnv();
-  const lastOnlineTime = await redis.get("lastOnlineTime");
-  return res.status(200).json({ lastOnlineTime: lastOnlineTime });
+interface ErrorResponse {
+  message: string;
+}
+
+export default async function handler(req: NextApiRequest, res: NextApiResponse<Data | ErrorResponse>) {
+  if (req.method !== "GET") {
+    return res.status(405).json({ message: "Method not allowed" });
+  }
+
+  try {
+    const redis = Redis.fromEnv();
+    const lastOnlineTime = await redis.get("lastOnlineTime");
+
+    return res.status(200).json({ lastOnlineTime });
+  } catch (error) {
+    console.error("Online status Redis read failed", error);
+    return res.status(200).json({ lastOnlineTime: null });
+  }
 }

@@ -2,55 +2,75 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 
 type Data = {
-  track: any;
+  track: unknown | null;
 };
 
-export default function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
-  let client_id = process.env.SPOTIFY_CLIENT_ID;
-  let client_secret = process.env.SPOTIFY_CLIENT_SECRET;
-  let refresh_token = process.env.SPOTIFY_REFRESH_TOKEN;
-  var access_token: string = "";
+type ErrorResponse = {
+  message: string;
+};
 
-  let authorization = Buffer.from(client_id + ":" + client_secret).toString("base64");
+type SpotifyTokenResponse = {
+  access_token?: string;
+};
 
-  let authOptions = {
-    url: "https://accounts.spotify.com/api/token",
-    headers: { Authorization: "Basic " + authorization },
-    form: {
-      grant_type: "refresh_token",
-      refresh_token: refresh_token,
-    },
-    json: true,
-  };
+export default async function handler(req: NextApiRequest, res: NextApiResponse<Data | ErrorResponse>) {
+  if (req.method !== "GET") {
+    return res.status(405).json({ message: "Method not allowed" });
+  }
 
-  fetch(authOptions.url, {
-    method: "POST",
-    headers: {
-      Authorization: "Basic " + authorization,
-      "Content-Type": "application/x-www-form-urlencoded",
-    },
-    body: `grant_type=refresh_token&refresh_token=${refresh_token}`,
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      access_token = data.access_token;
-      fetch("https://api.spotify.com/v1/me/player/currently-playing", {
-        method: "GET",
-        headers: {
-          Authorization: "Bearer " + access_token,
-        },
-      }).then((response) => {
-        if (response.status === 204) {
-          res.status(200).json({
-            track: null,
-          });
-        } else {
-          response.json().then((data) => {
-            return res.status(200).json({
-              track: data,
-            });
-          });
-        }
-      });
+  try {
+    const clientId = process.env.SPOTIFY_CLIENT_ID ?? "";
+    const clientSecret = process.env.SPOTIFY_CLIENT_SECRET ?? "";
+    const refreshToken = process.env.SPOTIFY_REFRESH_TOKEN ?? "";
+    const authorization = Buffer.from(`${clientId}:${clientSecret}`).toString("base64");
+
+    const tokenResponse = await fetch("https://accounts.spotify.com/api/token", {
+      method: "POST",
+      headers: {
+        Authorization: `Basic ${authorization}`,
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      body: `grant_type=refresh_token&refresh_token=${refreshToken}`,
     });
+
+    if (!tokenResponse.ok) {
+      console.error("Spotify token refresh failed", { status: tokenResponse.status });
+      return res.status(200).json({ track: null });
+    }
+
+    const tokenData: SpotifyTokenResponse = await tokenResponse.json();
+    const accessToken = tokenData.access_token;
+
+    if (!accessToken) {
+      console.error("Spotify token refresh returned no access token");
+      return res.status(200).json({ track: null });
+    }
+
+    const currentlyPlayingResponse = await fetch("https://api.spotify.com/v1/me/player/currently-playing", {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    });
+
+    if (currentlyPlayingResponse.status === 204) {
+      return res.status(200).json({ track: null });
+    }
+
+    if (!currentlyPlayingResponse.ok) {
+      console.error("Spotify currently playing request failed", {
+        status: currentlyPlayingResponse.status,
+      });
+      return res.status(200).json({ track: null });
+    }
+
+    const trackData: unknown = await currentlyPlayingResponse.json();
+
+    return res.status(200).json({
+      track: trackData,
+    });
+  } catch (error) {
+    console.error("Unexpected Spotify API route error", error);
+    return res.status(500).json({ message: "Internal server error" });
+  }
 }

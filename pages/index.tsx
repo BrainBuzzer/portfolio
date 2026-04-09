@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
+import RevealOnScroll from "../components/RevealOnScroll";
 import RecentBlogPosts from "../components/Home/RecentBlogPosts";
 import { Card } from "../components/Card";
 import { Container } from "../components/Container";
@@ -10,6 +11,13 @@ import { experience, focusItems, homeIntro, socialLinks } from "../utils/siteDat
 
 interface HomeProps {
   posts: PostSummary[];
+}
+
+function getTimeGreeting(): string {
+  const hour = new Date().getHours();
+  if (hour < 12) return "Good morning.";
+  if (hour < 18) return "Good afternoon.";
+  return "Good evening.";
 }
 
 function MailIcon(props: React.ComponentPropsWithoutRef<"svg">) {
@@ -64,10 +72,13 @@ function WorkSummary() {
               />
             </div>
             <dl className="flex flex-auto flex-wrap gap-x-2">
+              <dt className="sr-only">Company</dt>
               <dd className="w-full flex-none text-sm font-medium text-zinc-900 dark:text-zinc-100">{role.company}</dd>
+              <dt className="sr-only">Role</dt>
               <dd className="font-mono text-[0.72rem] tracking-[0.12em] text-zinc-500 dark:text-zinc-400">
                 {role.title}
               </dd>
+              <dt className="sr-only">Dates</dt>
               <dd className="ml-auto font-mono text-[0.72rem] tracking-[0.12em] text-zinc-400 dark:text-zinc-500">
                 {role.date}
               </dd>
@@ -116,6 +127,7 @@ export default function Home({ posts }: HomeProps) {
 
       <Container className="mt-16 sm:mt-24">
         <div className="max-w-2xl">
+          <p className="font-mono text-xs tracking-[0.12em] text-zinc-400 dark:text-zinc-500">{getTimeGreeting()}</p>
           <h1 className="font-display text-4xl font-medium tracking-tight text-zinc-900 sm:text-5xl dark:text-zinc-100">
             Software engineer, builder, and systems-minded operator.
           </h1>
@@ -126,10 +138,10 @@ export default function Home({ posts }: HomeProps) {
                 link.platform === "github"
                   ? GitHubIcon
                   : link.platform === "linkedin"
-                  ? LinkedInIcon
-                  : link.platform === "x"
-                  ? XIcon
-                  : MailIcon;
+                    ? LinkedInIcon
+                    : link.platform === "x"
+                      ? XIcon
+                      : MailIcon;
 
               return (
                 <SocialLink key={link.href} href={link.href} icon={icon}>
@@ -145,15 +157,20 @@ export default function Home({ posts }: HomeProps) {
         <div className="grid grid-cols-1 gap-y-16 lg:grid-cols-2 lg:gap-x-16">
           <div className="flex flex-col gap-16">
             <section>
-              <div className="mb-8">
-                <h2 className="font-pixel text-[0.72rem] uppercase leading-none tracking-[0.04em] text-zinc-900 sm:text-[0.78rem] dark:text-zinc-100">
-                  Writing
-                </h2>
-                <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
-                  Notes on engineering, systems, and the things I&apos;m learning along the way.
-                </p>
-              </div>
+              <RevealOnScroll>
+                <div className="mb-8">
+                  <h2 className="font-pixel text-[0.72rem] uppercase leading-none tracking-[0.04em] text-zinc-900 sm:text-[0.78rem] dark:text-zinc-100">
+                    Writing
+                  </h2>
+                  <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
+                    Notes on engineering, systems, and the things I&apos;m learning along the way.
+                  </p>
+                </div>
+              </RevealOnScroll>
               <RecentBlogPosts posts={posts.slice(0, 4)} basePath="/articles" />
+              {posts.length === 0 && (
+                <p className="text-sm text-zinc-500 dark:text-zinc-400">No articles yet. Check back soon.</p>
+              )}
             </section>
 
             <Card>
@@ -166,8 +183,12 @@ export default function Home({ posts }: HomeProps) {
           </div>
 
           <div className="space-y-8 lg:pl-4">
-            <WorkSummary />
-            <NowSummary />
+            <RevealOnScroll delay={0.1}>
+              <WorkSummary />
+            </RevealOnScroll>
+            <RevealOnScroll delay={0.15}>
+              <NowSummary />
+            </RevealOnScroll>
           </div>
         </div>
       </Container>

@@ -21,7 +21,13 @@ export function Card<T extends React.ElementType = "div">({
   const Component = as ?? "div";
 
   return (
-    <Component className={cn("group relative flex flex-col items-start", className)} {...props}>
+    <Component
+      className={cn(
+        "group relative flex flex-col items-start shadow-sm transition-transform transition-shadow duration-200 ease-[cubic-bezier(0.25,1,0.5,1)] hover:-translate-y-0.5 hover:shadow-md",
+        className,
+      )}
+      {...props}
+    >
       {children}
     </Component>
   );
@@ -71,7 +77,7 @@ Card.Cta = function CardCta({ children }: { children: React.ReactNode }) {
       className="relative z-10 mt-4 flex items-center text-sm font-medium text-teal-600 dark:text-teal-400"
     >
       {children}
-      <ChevronRightIcon className="ml-1 h-4 w-4 stroke-current" />
+      <ChevronRightIcon className="ml-1 h-4 w-4 stroke-current transition-transform duration-200 ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:translate-x-0.5" />
     </div>
   );
 };
@@ -91,7 +97,7 @@ Card.Eyebrow = function CardEyebrow<T extends React.ElementType = "p">({
   return (
     <Component
       className={cn(
-        "relative z-10 order-first mb-3 flex items-center font-mono text-[0.72rem] tracking-[0.12em] text-zinc-400 tabular-nums dark:text-zinc-500",
+        "relative z-10 order-first mb-3 flex items-center font-mono text-[0.72rem] tracking-[0.12em] text-zinc-400 tabular-nums dark:text-zinc-400",
         decorate && "pl-3.5",
         className,
       )}

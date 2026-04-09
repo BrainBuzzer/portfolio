@@ -56,14 +56,14 @@ export default function About() {
       <Container className="mt-16 sm:mt-24">
         <div className="grid grid-cols-1 gap-y-16 lg:grid-cols-2 lg:grid-rows-[auto_1fr] lg:gap-y-12">
           <div className="lg:pl-20">
-            <div className="max-w-xs px-2.5 lg:max-w-none">
+            <div className="group max-w-xs px-2.5 lg:max-w-none">
               <Image
                 src="/profile-pic.png"
                 alt="Aditya Giri"
                 width={800}
                 height={800}
                 sizes="(min-width: 1024px) 32rem, 20rem"
-                className="aspect-square rotate-3 rounded-2xl bg-zinc-100 object-cover dark:bg-zinc-800"
+                className="aspect-square rotate-3 rounded-2xl bg-zinc-100 object-cover transition-transform motion-safe:duration-300 motion-safe:ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:rotate-0 group-hover:scale-[1.02] dark:bg-zinc-800"
                 priority
               />
             </div>
@@ -85,10 +85,10 @@ export default function About() {
                   link.platform === "github"
                     ? GitHubIcon
                     : link.platform === "linkedin"
-                    ? LinkedInIcon
-                    : link.platform === "x"
-                    ? XIcon
-                    : MailIcon;
+                      ? LinkedInIcon
+                      : link.platform === "x"
+                        ? XIcon
+                        : MailIcon;
 
                 return (
                   <SocialLink
@@ -99,8 +99,8 @@ export default function About() {
                       index === socialLinks.length - 1
                         ? "mt-8 border-t border-zinc-200 pt-8 dark:border-zinc-700/40"
                         : index > 0
-                        ? "mt-4"
-                        : undefined
+                          ? "mt-4"
+                          : undefined
                     }
                   >
                     {link.label}

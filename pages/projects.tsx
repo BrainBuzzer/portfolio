@@ -14,7 +14,7 @@ function ProjectIcon({ kind }: { kind: "mqtt" | "php" | "campaign" | "policy" })
       <div
         className={`${wrapperClass} bg-cyan-100 text-cyan-700 ring-cyan-200 dark:bg-cyan-500/15 dark:text-cyan-300 dark:ring-cyan-500/25`}
       >
-        <FontAwesomeIcon icon={faSatelliteDish as any} className="h-6 w-6" />
+        <FontAwesomeIcon icon={faSatelliteDish as any} className="h-6 w-6" aria-hidden="true" />
       </div>
     );
   }
@@ -24,7 +24,7 @@ function ProjectIcon({ kind }: { kind: "mqtt" | "php" | "campaign" | "policy" })
       <div
         className={`${wrapperClass} bg-indigo-100 text-indigo-700 ring-indigo-200 dark:bg-indigo-500/15 dark:text-indigo-300 dark:ring-indigo-500/25`}
       >
-        <FontAwesomeIcon icon={faPhp as any} className="h-7 w-7" />
+        <FontAwesomeIcon icon={faPhp as any} className="h-7 w-7" aria-hidden="true" />
       </div>
     );
   }
@@ -34,7 +34,7 @@ function ProjectIcon({ kind }: { kind: "mqtt" | "php" | "campaign" | "policy" })
       <div
         className={`${wrapperClass} bg-emerald-100 text-emerald-700 ring-emerald-200 dark:bg-emerald-500/15 dark:text-emerald-300 dark:ring-emerald-500/25`}
       >
-        <FontAwesomeIcon icon={faBullhorn as any} className="h-6 w-6" />
+        <FontAwesomeIcon icon={faBullhorn as any} className="h-6 w-6" aria-hidden="true" />
       </div>
     );
   }
@@ -43,7 +43,7 @@ function ProjectIcon({ kind }: { kind: "mqtt" | "php" | "campaign" | "policy" })
     <div
       className={`${wrapperClass} bg-amber-100 text-amber-700 ring-amber-200 dark:bg-amber-500/15 dark:text-amber-300 dark:ring-amber-500/25`}
     >
-      <FontAwesomeIcon icon={faScaleBalanced as any} className="h-6 w-6" />
+      <FontAwesomeIcon icon={faScaleBalanced as any} className="h-6 w-6" aria-hidden="true" />
     </div>
   );
 }

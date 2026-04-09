@@ -1,18 +1,9 @@
 import Link from "next/link";
 import { ContainerInner, ContainerOuter } from "./Container";
 
-function NavLink({
-  href,
-  children,
-}: {
-  href: string;
-  children: React.ReactNode;
-}) {
+function NavLink({ href, children }: { href: string; children: React.ReactNode }) {
   return (
-    <Link
-      href={href}
-      className="transition hover:text-teal-600 dark:text-zinc-200 dark:hover:text-teal-400"
-    >
+    <Link href={href} className="transition hover:text-teal-600 dark:text-zinc-200 dark:hover:text-teal-400">
       {children}
     </Link>
   );
@@ -31,7 +22,7 @@ export default function Footer() {
                 <NavLink href="/projects">Projects</NavLink>
                 <NavLink href="/uses">Uses</NavLink>
               </div>
-              <p className="text-sm text-zinc-400 dark:text-zinc-500">
+              <p className="text-sm text-zinc-400 dark:text-zinc-400">
                 &copy; {new Date().getFullYear()} Aditya Giri. All rights reserved.
               </p>
             </div>

@@ -14,10 +14,7 @@ const navItems = [
 
 export default function Navbar() {
   const router = useRouter();
-  const pathname =
-    router.pathname.startsWith("/articles") || router.pathname.startsWith("/blog")
-      ? "/articles"
-      : router.pathname;
+  const pathname = router.pathname.startsWith("/articles") ? "/articles" : router.pathname;
 
   return (
     <header className="pointer-events-none relative z-50 flex flex-none flex-col">
@@ -25,11 +22,7 @@ export default function Navbar() {
         <div className="top-0 z-10">
           <div className="relative flex gap-4">
             <div className="flex flex-1">
-              <Link
-                href="/"
-                aria-label="Home"
-                className="pointer-events-auto rounded-full"
-              >
+              <Link href="/" aria-label="Home" className="pointer-events-auto rounded-full">
                 <Image
                   src="/profile-pic.png"
                   alt="Aditya Giri"

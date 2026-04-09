@@ -20,6 +20,7 @@ export default function Articles({ posts }: ArticlesProps) {
         intro="This is the full archive of the writing already on the site, moved into the Spotlight structure without changing the underlying posts."
       >
         <RecentBlogPosts posts={posts} basePath="/articles" />
+        {posts.length === 0 && <p className="text-sm text-zinc-500 dark:text-zinc-400">No articles published yet.</p>}
       </SimpleLayout>
     </>
   );
